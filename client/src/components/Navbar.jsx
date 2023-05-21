@@ -16,7 +16,7 @@ const Navbar = () => {
                                     <NavLink exact to="/services" className="nav-item nav-link active"><span className='nav_item'>Services</span></NavLink>
                                     <NavLink exact to="/community" className="nav-item nav-link"><span className='nav_item'>Community</span></NavLink>
                                     <div className="nav-item dropdown">
-                                        <NavLink exact to="/resource" className="nav-link dropdown-toggle" data-bs-toggle="dropdown"><span className='nav_item'>Resource</span></NavLink>
+                                        <NavLink exact to="/resource" className="nav-link dropdown-toggle" data-bs-toggle="dropdown"><span className='nav_item'>Resources</span></NavLink>
                                         <div className="dropdown-menu">
                                             <a href="#" className="dropdown-item">Inbox</a>
                                             <a href="#" className="dropdown-item">Sent</a>
