@@ -1,0 +1,56 @@
+[
+    {
+        "id": 1,
+        "image": "https://randomuser.me/api/portraits/men/51.jpg",
+        "thought": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "name": "John Doe"
+    },
+    {
+        "id": 2,
+        "image": "https://randomuser.me/api/portraits/men/1.jpg",
+        "thought": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "name": "Jane Smith"
+    },
+    {
+        "id": 3,
+        "image": "https://randomuser.me/api/portraits/men/31.jpg",
+        "thought": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "name": "Alice Johnson"
+    },
+    {
+        "id": 4,
+        "image": "https://randomuser.me/api/portraits/men/34.jpg",
+        "thought": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "name": "John Doe"
+    },
+    {
+        "id": 5,
+        "image": "https://randomuser.me/api/portraits/men/73.jpg",
+        "thought": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "name": "Jane Smith"
+    },
+    {
+        "id": 6,
+        "image": "https://randomuser.me/api/portraits/women/86.jpg",
+        "thought": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "name": "Alice Johnson"
+    },
+    {
+        "id": 4,
+        "image": "https://randomuser.me/api/portraits/men/21.jpg",
+        "thought": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "name": "John Doe"
+    },
+    {
+        "id": 5,
+        "image": "https://randomuser.me/api/portraits/men/47.jpg",
+        "thought": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "name": "Jane Smith"
+    },
+    {
+        "id": 6,
+        "image": "https://randomuser.me/api/portraits/men/79.jpg",
+        "thought": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "name": "Alice Johnson"
+    }
+]

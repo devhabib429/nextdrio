@@ -1,0 +1,18 @@
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(calc(-50% - 4rem));
+        /* Adjust according to the width of the cards and spacing */
+    }
+}
+
+.animate-marquee {
+    display: flex;
+    animation: marquee 60s linear infinite;
+    overflow-x: hidden;
+    width: fit-content;
+    /* Adjust based on your layout */
+}
