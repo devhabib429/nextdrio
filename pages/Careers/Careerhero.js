@@ -14,7 +14,7 @@ const CareerHero = () => {
                             Join Our Team
                         </h2>
                         <p className="text-base sm:text-lg lg:text-lg xl:text-xl text-white font-poppins mb-8">
-                            Explore exciting career opportunities at NextDrio. We're constantly looking for talented individuals who are passionate about technology and innovation to join our team.
+                            Explore exciting career opportunities at NextDrio. We&apos;re constantly looking for talented individuals who are passionate about technology and innovation to join our team.
                         </p>
                         <Link href="https://example.com/careers" passHref>
                             <div className="bg-transparent border border-white text-white py-2 px-4 rounded-full inline-block hover:bg-white hover:text-black transition duration-300">
@@ -37,5 +37,5 @@ const CareerHero = () => {
         </>
     );
 };
-
+//jhv
 export default CareerHero;
