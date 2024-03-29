@@ -1,22 +1,42 @@
 [
     {
-        "icon": "icon1.svg",
+        "icon": "../image/design.png",
         "name": "UIUX Design",
         "description": "User-centric solutions for captivating digital experiences with intuitive interfaces."
     },
     {
-        "icon": "icon2.svg",
+        "icon": "../image/wordpress.png",
         "name": "WordPress",
         "description": "Customizable website solutions empowering businesses with versatile content management systems."
     },
     {
-        "icon": "icon3.svg",
+        "icon": "../image/mobile-development.png",
         "name": "App Development",
         "description": "Crafting innovative mobile applications tailored to meet unique needs using cutting-edge technologies."
     },
     {
-        "icon": "icon4.svg",
+        "icon": "../image/customer.png",
         "name": "CRM",
         "description": "Comprehensive solutions to streamline customer interactions, manage leads, and drive sustainable growth."
+    },
+    {
+        "icon": "../image/coding.png",
+        "name": "Web Development",
+        "description": "Crafting innovative mobile applications tailored to meet unique needs using cutting-edge technologies."
+    },
+    {
+        "icon": "../image/devops.png",
+        "name": "DevOps",
+        "description": "Comprehensive solutions to streamline customer interactions, manage leads, and drive sustainable growth."
+    },
+    {
+        "icon": "../image/design.png",
+        "name": "UIUX Design",
+        "description": "User-centric solutions for captivating digital experiences with intuitive interfaces."
+    },
+    {
+        "icon": "../image/wordpress.png",
+        "name": "WordPress",
+        "description": "Customizable website solutions empowering businesses with versatile content management systems."
     }
 ]

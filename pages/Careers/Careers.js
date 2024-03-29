@@ -3,10 +3,10 @@ import Link from 'next/link';
 import Head from 'next/head';
 import Navbar from '../../components/RepeatComponents/Navbar';
 import Footer from '../../components/RepeatComponents/Footer';
-import Servicehero from './Serviceshero';
-import ServiceSection from './Servicessection';
-import Apply from './Apply';
-import ClientCarousel from './Clients';
+import HiringSection from './Hiring';
+import CareerHero from './Careerhero';
+import Notify from './Notify';
+
 
 const Services = () => {
     return (
@@ -16,10 +16,9 @@ const Services = () => {
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" />
             </Head>
             <Navbar />
-            <Servicehero />
-            <ServiceSection />
-            <Apply />
-            <ClientCarousel />
+            <CareerHero />
+            <HiringSection />
+            <Notify />
             <Footer />
         </>
     );

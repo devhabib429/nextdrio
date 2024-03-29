@@ -13,9 +13,9 @@ const TeamMemberCard = ({ image, name, designation }) => {
 
 const OurTeamGlimpse = () => {
     return (
-        <div className="container mx-auto pt-16">
+        <div className="container mx-auto pt-10">
             <h2 className="text-3xl font-bold mb-4 mt-8">Our Team Glimpse</h2>
-            <p className="text-lg text-gray-700 mb-12">Explore the talented individuals who power our team forward.</p>
+            <p className="text-lg text-gray-700 mb-16">Explore the talented individuals who power our team forward.</p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {teamData.map(member => (
                     <TeamMemberCard key={member.id} {...member} />

@@ -4,17 +4,19 @@ import servicesData from './servicesData.json';
 const ServiceSection = () => {
     return (
         <div className="py-8">
-            <h2 className="text-3xl font-bold mt-14 mb-24 ml-16">Elevate your business with our <br /> comprehensive offerings</h2>
+            <h2 className="text-3xl font-bold mt-3 mb-16 ml-8 text-center">
+                Transform Your Business with Our <br /> Tailored Solutions
+            </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 {servicesData.map((service, index) => (
                     <div
                         key={index}
-                        className="bg-white rounded-lg shadow-md overflow-hidden px-4 py-4" // Added padding classes here
+                        className="bg-white rounded-lg shadow-md overflow-hidden px-4 py-4 transition duration-300 ease-in-out transform hover:scale-105"
                     >
                         <img
-                            src={`/icons/${service.icon}`}
+                            src={service.icon}
                             alt={service.name}
-                            className="pl-8 mt-2 mb-2" // Center image and add margin top and bottom
+                            className="pl-8 mt-2 mb-2"
                             style={{ maxWidth: '100px' }}
                         />
                         <div className="p-4 pl-4">
@@ -29,4 +31,3 @@ const ServiceSection = () => {
 };
 
 export default ServiceSection;
-

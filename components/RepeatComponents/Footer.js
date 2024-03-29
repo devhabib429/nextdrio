@@ -5,11 +5,11 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/f
 const Footer = () => {
   return (
     <footer className="bg-black text-white py-8">
-      <div className="container mx-auto flex flex-wrap justify-around">
-        <div className="w-full mb-8">
+      <div className="container mx-auto flex flex-wrap justify-between">
+        <div className="w-full mb-8 sm:mb-0">
           <h2 className="text-2xl font-bold mb-4">NextDrio</h2>
         </div>
-        <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 mb-8">
+        <div className="w-full sm:w-auto md:w-auto lg:w-auto xl:w-auto mb-8 sm:mb-0">
           <h3 className="text-lg font-bold mb-4">Quick Links</h3>
           <ul>
             <li>
@@ -26,7 +26,7 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 mb-8">
+        <div className="w-full sm:w-auto md:w-auto lg:w-auto xl:w-auto mb-8 sm:mb-0">
           <h3 className="text-lg font-bold mb-4">Technologies</h3>
           <ul>
             <li>
@@ -49,11 +49,11 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 mb-8">
+        <div className="w-full sm:w-auto md:w-auto lg:w-auto xl:w-auto mb-8 sm:mb-0">
           <h3 className="text-lg font-bold mb-4">Hiring</h3>
           <ul>
             <li>
-              <Link href="#">Careers</Link>
+              <Link href="/Careers/Careers">Careers</Link>
             </li>
             <li>
               <Link href="#">Internships</Link>
@@ -63,9 +63,9 @@ const Footer = () => {
             </li>
           </ul>
         </div>
-        <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 mb-8">
+        <div className="w-full sm:w-auto md:w-auto lg:w-auto xl:w-auto mb-8 sm:mb-0">
           <h3 className="text-lg font-bold mb-4">Follow Us</h3>
-          <div className="flex items-center">
+          <div className="flex">
             <a href="#" className="mr-4">
               <FaFacebookF className="text-white" />
             </a>
@@ -80,9 +80,9 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="w-full text-center">
-          <p>&copy; {new Date().getFullYear()} NextDrio. All rights reserved.</p>
-        </div>
+      </div>
+      <div className="text-center">
+        <p>&copy; {new Date().getFullYear()} NextDrio. All rights reserved.</p>
       </div>
     </footer>
   );
