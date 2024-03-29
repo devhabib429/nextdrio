@@ -2,7 +2,7 @@ import React from 'react';
 
 const Webuildideas = () => {
     return (
-        <div className="flex flex-col pt-16 h-auto md:min-h-screen">
+        <div className="flex flex-col pt-16 pb-8 md:pb-24">
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-8 md:mb-12">We Build Ideas into Reality</h1>
             <div className="px-4 md:px-8 lg:px-28">
                 <p className="text-sm md:text-md lg:text-lg text-gray-600 text-left mb-6 md:mb-8">
