@@ -39,8 +39,6 @@
 
 // export default CommunityTestimonial;
 
-//jn
-
 import React, { useState, useEffect } from 'react';
 import testimonialData from './CommunityTestimonial.json';
 import styles from '../../styles/Community.module.css';
@@ -54,7 +52,7 @@ const CommunityTestimonial = () => {
 
     useEffect(() => {
         const calculateContainerWidth = () => {
-            const cardWidth = window.innerWidth > 768 ? 300 : window.innerWidth - 32; // Adjust this according to your design
+            const cardWidth = 300; // Adjust this according to your card width
             const totalCardsWidth = duplicatedData.length * cardWidth;
             const screenWidth = window.innerWidth;
             const calculatedWidth = totalCardsWidth > screenWidth ? `${totalCardsWidth}px` : '100%';
@@ -84,7 +82,7 @@ const CommunityTestimonial = () => {
             >
                 <div className={`flex justify-start space-x-4 md:space-x-8 md:p-8 ${styles.scrollWrapper}`} style={{ animationPlayState: isPaused ? 'paused' : 'running', width: containerWidth }}>
                     {duplicatedData.map((testimonial, index) => (
-                        <div key={index} className={`bg-transparent border border-black rounded-lg p-4 flex-shrink-0 ${window.innerWidth > 768 ? 'w-80' : 'w-full'} ${styles.card}`}>
+                        <div key={index} className={`bg-transparent border border-black rounded-lg p-4 flex-shrink-0 w-80 ${styles.card}`}>
                             <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4">
                                 <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
                             </div>
@@ -102,7 +100,6 @@ const CommunityTestimonial = () => {
 };
 
 export default CommunityTestimonial;
-
 
 
 
