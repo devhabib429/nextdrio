@@ -52,8 +52,10 @@ const CommunityTestimonial = () => {
 
     useEffect(() => {
         const calculateContainerWidth = () => {
-            const screenWidth = window.innerWidth;
-            setContainerWidth(`${screenWidth}px`);
+            if (typeof window !== 'undefined') {
+                const screenWidth = window.innerWidth;
+                setContainerWidth(`${screenWidth}px`);
+            }
         };
 
         calculateContainerWidth();
@@ -62,11 +64,13 @@ const CommunityTestimonial = () => {
             calculateContainerWidth();
         };
 
-        window.addEventListener('resize', handleResize);
+        if (typeof window !== 'undefined') {
+            window.addEventListener('resize', handleResize);
 
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
+            return () => {
+                window.removeEventListener('resize', handleResize);
+            };
+        }
     }, []);
 
     return (
@@ -97,6 +101,7 @@ const CommunityTestimonial = () => {
 };
 
 export default CommunityTestimonial;
+
 
 
 
