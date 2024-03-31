@@ -39,15 +39,24 @@
 
 // export default CommunityTestimonial;
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import testimonialData from './CommunityTestimonial.json';
 import styles from '../../styles/Community.module.css';
 import { FaQuoteLeft } from 'react-icons/fa';
 
 const CommunityTestimonial = () => {
     const [isPaused, setIsPaused] = useState(false);
+    const containerRef = useRef(null);
+    const [containerWidth, setContainerWidth] = useState(0);
 
     const duplicatedData = [...testimonialData, ...testimonialData];
+
+    useEffect(() => {
+        if (containerRef.current) {
+            const width = containerRef.current.getBoundingClientRect().width;
+            setContainerWidth(width);
+        }
+    }, [containerRef.current, duplicatedData]);
 
     return (
         <div className="p-4 md:p-14 bg-gray-100">
@@ -57,7 +66,7 @@ const CommunityTestimonial = () => {
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
             >
-                <div className={`flex flex-wrap justify-start space-x-4 md:space-x-8 md:p-8 ${styles.scrollWrapper}`} style={{ animationPlayState: isPaused ? 'paused' : 'running' }}>
+                <div ref={containerRef} className={`flex justify-start space-x-4 md:space-x-8 md:p-8 ${styles.scrollWrapper}`} style={{ animationPlayState: isPaused ? 'paused' : 'running', width: containerWidth }}>
                     {duplicatedData.map((testimonial, index) => (
                         <div key={index} className={`bg-transparent border border-black rounded-lg p-4 flex-shrink-0 w-full md:w-80 ${styles.card}`}>
                             <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4">
@@ -77,4 +86,5 @@ const CommunityTestimonial = () => {
 };
 
 export default CommunityTestimonial;
+
 
