@@ -39,7 +39,7 @@
 
 // export default CommunityTestimonial;
 
-//jnw
+//jn
 
 import React, { useState, useEffect } from 'react';
 import testimonialData from './CommunityTestimonial.json';
