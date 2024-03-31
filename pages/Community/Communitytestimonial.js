@@ -39,6 +39,8 @@
 
 // export default CommunityTestimonial;
 
+//jnw
+
 import React, { useState, useEffect } from 'react';
 import testimonialData from './CommunityTestimonial.json';
 import styles from '../../styles/Community.module.css';
