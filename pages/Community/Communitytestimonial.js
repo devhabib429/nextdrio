@@ -53,11 +53,11 @@ const CommunityTestimonial = () => {
         <div className="p-4 md:p-14 bg-gray-100">
             <h2 className="text-xl font-bold mb-4">What Folks Say</h2>
             <div
-                className={`p-4 md:p-14 ${styles['animate-marquee']} overflow-x-scroll`}
+                className={`p-4 md:p-14 ${styles['animate-marquee']} overflow-x-hidden`}
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
             >
-                <div className={`flex justify-start space-x-4 md:space-x-8 md:p-8 ${styles.scrollWrapper}`} style={{ animationPlayState: isPaused ? 'paused' : 'running' }}>
+                <div className={`flex flex-wrap justify-start space-x-4 md:space-x-8 md:p-8 ${styles.scrollWrapper}`} style={{ animationPlayState: isPaused ? 'paused' : 'running' }}>
                     {duplicatedData.map((testimonial, index) => (
                         <div key={index} className={`bg-transparent border border-black rounded-lg p-4 flex-shrink-0 w-full md:w-80 ${styles.card}`}>
                             <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4">
