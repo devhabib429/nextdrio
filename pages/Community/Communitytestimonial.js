@@ -53,7 +53,7 @@ const CommunityTestimonial = () => {
         <div className="p-4 md:p-14 bg-gray-100">
             <h2 className="text-xl font-bold mb-4">What Folks Say</h2>
             <div
-                className={`p-4 md:p-14 ${styles['animate-marquee']} overflow-x-hidden`}
+                className={`p-4 md:p-14 ${styles['animate-marquee']} overflow-x-scroll`}
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
             >
@@ -77,3 +77,4 @@ const CommunityTestimonial = () => {
 };
 
 export default CommunityTestimonial;
+
