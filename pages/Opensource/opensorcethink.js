@@ -51,9 +51,9 @@ import { FaUsers, FaCode, FaTools, FaGlobe } from 'react-icons/fa';
 
 const OpenSourceThought = () => {
     return (
-        <div className="p-8 md:p-16 bg-gradient-to-r from-indigo-300 to-indigo-500 rounded-lg text-white">
+        <div className="p-8 md:p-16 bg-gradient-to-r from-indigo-300 to-indigo-500 rounded-lg text-white flex flex-col items-center justify-between">
             <h2 className="text-3xl md:text-4xl font-bold mb-8 md:mb-12 font-serif tracking-widest text-center">Why Open Source?</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 font-serif tracking-wide">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 font-serif tracking-wide flex flex-col items-center justify-between">
                 <div className="flex items-center">
                     <FaUsers className="text-3xl md:text-4xl mr-4" />
                     <p className="text-lg md:text-xl">Community-driven development</p>
