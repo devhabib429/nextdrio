@@ -39,6 +39,8 @@
 
 // export default CommunityTestimonial;
 
+//gre
+
 import React, { useState, useEffect } from 'react';
 import testimonialData from './CommunityTestimonial.json';
 import styles from '../../styles/Community.module.css';
@@ -51,26 +53,20 @@ const CommunityTestimonial = () => {
     const duplicatedData = [...testimonialData, ...testimonialData];
 
     useEffect(() => {
-        const calculateContainerWidth = () => {
-            if (typeof window !== 'undefined') {
+        let resizeHandler;
+        if (typeof window !== 'undefined') {
+            resizeHandler = () => {
                 const screenWidth = window.innerWidth;
                 setContainerWidth(`${screenWidth}px`);
+            };
+            window.addEventListener('resize', resizeHandler);
+        }
+
+        return () => {
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', resizeHandler);
             }
         };
-
-        calculateContainerWidth();
-
-        const handleResize = () => {
-            calculateContainerWidth();
-        };
-
-        if (typeof window !== 'undefined') {
-            window.addEventListener('resize', handleResize);
-
-            return () => {
-                window.removeEventListener('resize', handleResize);
-            };
-        }
     }, []);
 
     return (
@@ -83,7 +79,7 @@ const CommunityTestimonial = () => {
             >
                 <div className={`flex flex-wrap md:flex-nowrap justify-start space-x-4 md:space-x-8 md:p-8 ${styles.scrollWrapper}`} style={{ animationPlayState: isPaused ? 'paused' : 'running', width: containerWidth }}>
                     {duplicatedData.map((testimonial, index) => (
-                        <div key={index} className={`bg-transparent border border-black rounded-lg p-4 flex-shrink-0 ${window.innerWidth > 768 ? 'w-80' : 'w-full'} ${styles.card}`}>
+                        <div key={index} className={`bg-transparent border border-black rounded-lg p-4 flex-shrink-0 ${typeof window !== 'undefined' && window.innerWidth > 768 ? 'w-80' : 'w-full'} ${styles.card}`}>
                             <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4">
                                 <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
                             </div>
@@ -101,6 +97,7 @@ const CommunityTestimonial = () => {
 };
 
 export default CommunityTestimonial;
+
 
 
 
