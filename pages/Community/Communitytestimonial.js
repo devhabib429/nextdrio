@@ -53,19 +53,17 @@ const CommunityTestimonial = () => {
     const duplicatedData = [...testimonialData, ...testimonialData];
 
     useEffect(() => {
-        let resizeHandler;
-        if (typeof window !== 'undefined') {
-            resizeHandler = () => {
-                const screenWidth = window.innerWidth;
-                setContainerWidth(`${screenWidth}px`);
-            };
-            window.addEventListener('resize', resizeHandler);
-        }
+        const handleResize = () => {
+            const screenWidth = window.innerWidth;
+            setContainerWidth(screenWidth > 768 ? '768px' : '100%');
+        };
+
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
 
         return () => {
-            if (typeof window !== 'undefined') {
-                window.removeEventListener('resize', resizeHandler);
-            }
+            window.removeEventListener('resize', handleResize);
         };
     }, []);
 
@@ -77,9 +75,9 @@ const CommunityTestimonial = () => {
                 onMouseEnter={() => setIsPaused(true)}
                 onMouseLeave={() => setIsPaused(false)}
             >
-                <div className={`flex flex-wrap md:flex-nowrap justify-start space-x-4 md:space-x-8 md:p-8 ${styles.scrollWrapper}`} style={{ animationPlayState: isPaused ? 'paused' : 'running', width: containerWidth }}>
+                <div className={`flex flex-wrap justify-start space-x-4 md:space-x-8 md:p-8 ${styles.scrollWrapper}`} style={{ animationPlayState: isPaused ? 'paused' : 'running', width: containerWidth }}>
                     {duplicatedData.map((testimonial, index) => (
-                        <div key={index} className={`bg-transparent border border-black rounded-lg p-4 flex-shrink-0 ${typeof window !== 'undefined' && window.innerWidth > 768 ? 'w-80' : 'w-full'} ${styles.card}`}>
+                        <div key={index} className={`bg-transparent border border-black rounded-lg p-4 flex-shrink-0 ${window.innerWidth > 768 ? 'w-80' : 'w-full'} ${styles.card}`}>
                             <div className="w-16 h-16 rounded-full overflow-hidden mx-auto mb-4">
                                 <img src={testimonial.image} alt={testimonial.name} className="w-full h-full object-cover" />
                             </div>
@@ -97,6 +95,7 @@ const CommunityTestimonial = () => {
 };
 
 export default CommunityTestimonial;
+
 
 
 
