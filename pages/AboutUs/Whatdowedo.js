@@ -5,32 +5,32 @@ const WhatWeDo = () => {
         {
             "image": "https://randomuser.me/api/portraits/men/11.jpg",
             "title": "David Bakhum",
-            "description": "Working with David was an absolute pleasure! His dedication and expertise truly made a difference in our project's success."
+            "description": "Working with David was an absolute pleasure! His dedication and expertise truly made a difference in our project&apos;s success."
         },
         {
             "image": "https://randomuser.me/api/portraits/men/12.jpg",
             "title": "Irish Tomet",
-            "description": "Irish's attention to detail and creative solutions were invaluable to our team. Highly recommend! "
+            "description": "Irish&apos;s attention to detail and creative solutions were invaluable to our team. Highly recommend! "
         },
         {
             "image": "https://randomuser.me/api/portraits/men/3.jpg",
             "title": "Yash Patidhar",
-            "description": "Yash's professionalism and commitment exceeded our expectations. We couldn't have asked for a better partner."
+            "description": "Yash&apos;s professionalism and commitment exceeded our expectations. We couldn&apos;t have asked for a better partner."
         },
         {
             "image": "https://randomuser.me/api/portraits/men/11.jpg",
             "title": "David Bakhum",
-            "description": "Working with David was an absolute pleasure! His dedication and expertise truly made a difference in our project's success."
+            "description": "Working with David was an absolute pleasure! His dedication and expertise truly made a difference in our project&apos;s success."
         },
         {
             "image": "https://randomuser.me/api/portraits/men/12.jpg",
             "title": "Irish Tomet",
-            "description": "Irish's attention to detail and creative solutions were invaluable to our team. Highly recommend! "
+            "description": "Irish&apos;s attention to detail and creative solutions were invaluable to our team. Highly recommend! "
         },
         {
             "image": "https://randomuser.me/api/portraits/men/3.jpg",
             "title": "Yash Patidhar",
-            "description": "Yash's professionalism and commitment exceeded our expectations. We couldn't have asked for a better partner."
+            "description": "Yash&apos;s professionalism and commitment exceeded our expectations. We couldn&apos;t have asked for a better partner."
         }
     ];
 
@@ -39,7 +39,7 @@ const WhatWeDo = () => {
             <div className="container mx-auto px-4">
                 <h2 className="text-3xl font-bold text-center mb-8">People Talk about us</h2>
                 <p className="text-lg text-center text-gray-700 mb-8">
-                    Here's a brief description of what we do and how we can help you.
+                    Here&apos;s a brief description of what we do and how we can help you.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     {cardData.map((card, index) => (
