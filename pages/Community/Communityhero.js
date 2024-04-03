@@ -45,7 +45,7 @@ const Communityhero = () => {
                 <div className="flex justify-center items-center md:w-1/2">
                     <div className="max-w-sm md:max-w-full">
                         <Image
-                            src="/image/communityhero.svg"
+                            src="/image/community.svg"
                             alt="Image Description"
                             width={500}
                             height={500}

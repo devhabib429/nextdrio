@@ -10,6 +10,7 @@ import Numbers from './Numbers';
 import OurTeamGlimpse from './Teams';
 import Jointeam from './Jointeam';
 import OurContact from '../../components/Homepage/Ourcontact';
+import WhatWeDo from './Whatdowedo';
 
 
 
@@ -20,14 +21,15 @@ const Community = () => {
                 <title>NextDrio</title>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" />
             </Head>
-            <Navbar />
+            <Navbar bgColor="transparent" textColor="black" />
             <Abouthero />
             <AboutContent />
             <Webuildideas />
-            <Numbers />
+            {/* <Numbers /> */}
             <OurTeamGlimpse />
+            <WhatWeDo/>
             <Jointeam />
-            <OurContact/>
+            <OurContact />
             <Footer />
         </>
     );
