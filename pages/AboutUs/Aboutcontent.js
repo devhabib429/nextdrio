@@ -5,7 +5,7 @@ const AboutContent = () => {
         <div className="bg-gray-100 py-12">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="lg:text-center pb-10">
-                    <h2 className="text-3xl pb-10 leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    <h2 className="text-3xl pb-10 leading-8 font-bold text-gray-900 sm:text-4xl">
                         Empowering Tomorrow&apos;s Innovations
                     </h2>
                     <p className="mt-2 text-xl text-gray-600">

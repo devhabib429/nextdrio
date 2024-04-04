@@ -397,7 +397,7 @@ const Navbar = ({ bgColor, textColor }) => {
                     <Link href="/Opensource/Opensource" passHref>
                         <div className={`hover:text-gray-300 cursor-pointer text-sm text-${textColor}`}>Open Source</div>
                     </Link>
-                    <Link href="/ContactUs/ContactUs" passHref>
+                    <Link href="/AboutUs/Aboutus" passHref>
                         <div className={`hover:text-gray-300 cursor-pointer text-sm text-${textColor}`}>About Us</div>
                     </Link>
                 </div>

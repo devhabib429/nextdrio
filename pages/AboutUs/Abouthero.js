@@ -76,8 +76,8 @@ const Abouthero = () => {
                         <Image
                             src="/image/abouthero.svg"
                             alt="Image Description"
-                            width={500}
-                            height={500}
+                            width={800}
+                            height={800}
                         />
                     </div>
                 </div>

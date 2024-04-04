@@ -53,7 +53,7 @@ const CommunityTestimonial = () => {
 
     return (
         <div className="p-4 md:p-14 bg-gray-100 overflow-x-hidden"> {/* Updated line */}
-            <h2 className="text-xl font-bold mb-4">What Folk Says</h2>
+            <h2 className="text-2xl font-bold mb-4">What Folk Says</h2>
             <div
                 className={`p-4 md:p-14 ${styles['animate-marquee']} overflow-x-hidden`}
                 onMouseEnter={() => setIsPaused(true)}
