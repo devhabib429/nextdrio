@@ -188,7 +188,7 @@ const ClientCarousel = () => {
                 </div>
             </div>
             <div className="md:w-1/2 pl-48 pt-12 pr-24">
-                <img
+                <Image
                     src="/image/service2.png"
                     alt="Image"
                     className="w-[400px] h-auto"
