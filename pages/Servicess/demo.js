@@ -14,7 +14,7 @@ const Technologies = () => {
             <div className="md:w-1/2 flex flex-col justify-center px-4 md:px-8 lg:px-16">
                 <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-center mb-8 md:mb-16">Bring Along Your Favorite Technology</h1>
                 <p className="text-base text-gray-600 text-center md:text-left mb-4 md:mb-6">
-                    "Join NextDrio's Open Source community and bring your favorite technology with you! Dive into a world of boundless innovation and collaboration, where together, we'll shape the future of tech."
+                    &quot;Join NextDrio&apos;s Open Source community and bring your favorite technology with you! Dive into a world of boundless innovation and collaboration, where together, we&apos;ll shape the future of tech.&quot;
                 </p>
             </div>
         </div>
