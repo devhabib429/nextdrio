@@ -4,55 +4,71 @@
         "heading": "Web Development Workshop",
         "description": "Join us for an interactive workshop on modern web development technologies. Learn about HTML, CSS, JavaScript, and more!",
         "author": "John Doe",
-        "designation": "Web Developer"
+        "designation": "Web Developer",
+        "image": "https://randomuser.me/api/portraits/men/41.jpg",
+        "datetime": "March 11,2024 @ 2:00 PM"
     },
     {
         "id": 2,
         "heading": "Digital Marketing Seminar",
         "description": "Discover the latest trends and strategies in digital marketing. Get insights into SEO, social media marketing, and content creation.",
         "author": "Jane Smith",
-        "designation": "Marketing Specialist"
+        "designation": "Marketing Specialist",
+        "image": "https://randomuser.me/api/portraits/men/73.jpg",
+        "datetime": "March 11,2024 @ 2:00 PM"
     },
     {
         "id": 3,
         "heading": "Artificial Intelligence Conference",
         "description": "Explore the fascinating world of AI at our upcoming conference. Learn from industry experts and discover real-world applications.",
         "author": "Alex Johnson",
-        "designation": "AI Researcher"
+        "designation": "AI Researcher",
+        "image": "https://randomuser.me/api/portraits/men/78.jpg",
+        "datetime": "March 11,2024 @ 2:00 PM"
     },
     {
         "id": 4,
         "heading": "Graphic Design Workshop",
         "description": "Unleash your creativity in our graphic design workshop. Master tools like Adobe Photoshop and Illustrator while creating stunning designs.",
         "author": "Emily Brown",
-        "designation": "Graphic Designer"
+        "designation": "Graphic Designer",
+        "image": "https://randomuser.me/api/portraits/men/90.jpg",
+        "datetime": "March 11,2024 @ 2:00 PM"
     },
     {
         "id": 1,
         "heading": "Web Development Workshop",
         "description": "Join us for an interactive workshop on modern web development technologies. Learn about HTML, CSS, JavaScript, and more!",
         "author": "John Doe",
-        "designation": "Web Developer"
+        "designation": "Web Developer",
+        "image": "https://randomuser.me/api/portraits/men/89.jpg",
+        "datetime": "March 11,2024 @ 2:00 PM"
     },
     {
         "id": 2,
         "heading": "Digital Marketing Seminar",
         "description": "Discover the latest trends and strategies in digital marketing. Get insights into SEO, social media marketing, and content creation.",
         "author": "Jane Smith",
-        "designation": "Marketing Specialist"
+        "designation": "Marketing Specialist",
+        "image": "https://randomuser.me/api/portraits/men/80.jpg",
+        "datetime": "March 11,2024 @ 2:00 PM"
     },
     {
         "id": 3,
         "heading": "Artificial Intelligence Conference",
         "description": "Explore the fascinating world of AI at our upcoming conference. Learn from industry experts and discover real-world applications.",
         "author": "Alex Johnson",
-        "designation": "AI Researcher"
+        "designation": "AI Researcher",
+        "image": "https://randomuser.me/api/portraits/men/81.jpg",
+        "datetime": "March 11,2024 @ 2:00 PM"
     },
     {
         "id": 4,
         "heading": "Graphic Design Workshop",
         "description": "Unleash your creativity in our graphic design workshop. Master tools like Adobe Photoshop and Illustrator while creating stunning designs.",
         "author": "Emily Brown",
-        "designation": "Graphic Designer"
+        "designation": "Graphic Designer",
+        "image": "https://randomuser.me/api/portraits/men/82.jpg",
+        "datetime": "March 11,2024 @ 2:00 PM"
     }
 ]

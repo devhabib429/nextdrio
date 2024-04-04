@@ -26,7 +26,7 @@ const Servicehero = () => {
                 <div className="w-full md:w-1/2">
                     <div className="pt-8 md:pt-0">
                         <Image
-                            src="/image/serviceshero.svg"
+                            src="/image/servicehhero.png"
                             alt="Image Description"
                             width={500}
                             height={500}
