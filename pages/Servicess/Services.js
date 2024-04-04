@@ -7,6 +7,9 @@ import Servicehero from './Serviceshero';
 import ServiceSection from './Servicessection';
 import Apply from './Apply';
 import ClientCarousel from './Clients';
+import Technolgies from './demo';
+
+
 
 const Services = () => {
     return (
@@ -19,7 +22,9 @@ const Services = () => {
             <Servicehero />
             <ServiceSection />
             <Apply />
+            <Technolgies />
             <ClientCarousel />
+
             <Footer />
         </>
     );

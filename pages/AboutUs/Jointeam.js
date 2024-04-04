@@ -42,7 +42,7 @@ const Jointeam = () => {
             {/* Second Column */}
             <div className="w-full sm:w-1/2 px-4 pt-16">
                 <div className="text-center">
-                    <img src="/image/collab.png" alt="Collaboration" className="rounded-lg" />
+                    <img src="/image/collab.png" alt="Collaboration" className="rounded-lg h-[400px] w-[700px]" />
                 </div>
             </div>
         </div>
