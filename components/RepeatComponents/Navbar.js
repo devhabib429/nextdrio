@@ -377,7 +377,7 @@ const Navbar = ({ bgColor, textColor }) => {
             <div className="container mx-auto flex items-center justify-between">
                 {/* Logo */}
                 <div className={`text-${textColor} flex space-x-4`}>
-                    <div className={`text-${textColor} text-xl font-serif tracking-widest text-extrabold cursor-pointer`}>NextDrio</div>
+                    <div className={`text-${textColor} text-xl font-serif tracking-widest font-bold text-extrabold cursor-pointer`}>NextDrio</div>
                 </div>
 
                 {/* Menu */}
@@ -396,6 +396,9 @@ const Navbar = ({ bgColor, textColor }) => {
 
                     <Link href="/Opensource/Opensource" passHref>
                         <div className={`hover:text-gray-300 cursor-pointer text-sm text-${textColor}`}>Open Source</div>
+                    </Link>
+                    <Link href="/ContactUs/ContactUs" passHref>
+                        <div className={`hover:text-gray-300 cursor-pointer text-sm text-${textColor}`}>About Us</div>
                     </Link>
                 </div>
 

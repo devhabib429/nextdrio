@@ -29,20 +29,20 @@ import React from 'react';
 
 const Jointeam = () => {
     return (
-        <div className="flex flex-wrap justify-center items-center py-48">
+        <div className="flex flex-wrap justify-center items-center py-24">
             {/* First Column */}
             <div className="w-full sm:w-1/2 px-4">
                 <div className="text-center">
-                    <h2 className="text-3xl font-bold mb-4">Interesting Collaboration With Us?</h2>
+                    <h2 className="text-4xl font-bold mb-4">Interesting Collaboration With Us?</h2>
                     <p className="text-lg mb-6">Help you to reach your business goal</p>
                     <button className="bg-black text-white rounded-full py-2 px-6 hover:bg-gray-800 transition duration-300">Reach Us</button>
                 </div>
             </div>
 
             {/* Second Column */}
-            <div className="w-full sm:w-1/2 px-4">
+            <div className="w-full sm:w-1/2 px-4 pt-16">
                 <div className="text-center">
-                    <img src="/your-image.jpg" alt="Collaboration" className="rounded-lg" />
+                    <img src="/image/collab.png" alt="Collaboration" className="rounded-lg" />
                 </div>
             </div>
         </div>
