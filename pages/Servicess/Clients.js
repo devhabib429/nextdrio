@@ -223,7 +223,7 @@ const ClientCarousel = () => {
     }, []);
 
     return (
-        <div className="flex flex-col md:flex-row items-center justify-center py-8 md:py-16">
+        <div className="flex flex-col md:flex-row items-center justify-center py-12 md:py-12">
             <div className="md:w-1/2 pl-12 relative">
                 <h2 className="text-2xl font-bold mb-16 text-gray-800">What Our Core Clients Say ?</h2>
                 <div className="carousel-container relative w-full h-auto md:w-96 md:h-96 overflow-hidden pl-10 md:pl-48 pt-[450px] left-10 z-30">
@@ -262,14 +262,14 @@ const ClientCarousel = () => {
                     ))}
                 </div> */}
             </div>
-            <div className="md:w-1/2 pl-20 md:pl-48 pt-12 pr-24 absolute right-10 md:right-40 z-20">
+            <div className="md:w-[700px] pl-20 md:pl-48 pt-4 pr-12 absolute right-10 md:right-[500px] z-20">
                 <Image
                     src="/image/service2.png"
                     alt="Image"
-                    width={400}
-                    height={400}
+                    width={100}
+                    height={100}
                     layout="responsive"
-                    className="w-[400px] h-auto"
+                    className="w-48 h-auto"
                 />
             </div>
         </div>
