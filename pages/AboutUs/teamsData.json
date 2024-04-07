@@ -1,40 +1,38 @@
-
 [
-    {
-      "id": 1,
-      "name": "John Doe",
-      "designation": "CEO",
-      "image": "https://randomuser.me/api/portraits/men/47.jpg"
-    },
-    {
-      "id": 2,
-      "name": "Jane Smith",
-      "designation": "CTO",
-      "image": "https://randomuser.me/api/portraits/men/46.jpg"
-    },
-    {
-      "id": 3,
-      "name": "David Brown",
-      "designation": "Lead Developer",
-      "image": "https://randomuser.me/api/portraits/men/78.jpg"
-    },
-    {
-        "id": 1,
-        "name": "Wick Dawn",
-        "designation": "Python Developer",
-        "image": "https://randomuser.me/api/portraits/men/35.jpg"
-      },
-      {
-        "id": 2,
-        "name": "Jane Brawo",
-        "designation": "DevOps",
-        "image": "https://randomuser.me/api/portraits/men/20.jpg"
-      },
-      {
-        "id": 3,
-        "name": "Travis Brown",
-        "designation": "Head Delivery",
-        "image": "https://randomuser.me/api/portraits/men/73.jpg"
-      }
-  ]
-  
+  {
+    "id": 1,
+    "name": "Vaishnavi Lilhare",
+    "designation": "Berojgar Engineer",
+    "image": "/image/kellular.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Jane Smith",
+    "designation": "CTO",
+    "image": "https://randomuser.me/api/portraits/men/46.jpg"
+  },
+  {
+    "id": 3,
+    "name": "David Brown",
+    "designation": "Lead Developer",
+    "image": "https://randomuser.me/api/portraits/men/78.jpg"
+  },
+  {
+    "id": 1,
+    "name": "Wick Dawn",
+    "designation": "Python Developer",
+    "image": "https://randomuser.me/api/portraits/men/35.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Jane Brawo",
+    "designation": "DevOps",
+    "image": "https://randomuser.me/api/portraits/men/20.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Travis Brown",
+    "designation": "Head Delivery",
+    "image": "https://randomuser.me/api/portraits/men/73.jpg"
+  }
+]
