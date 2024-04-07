@@ -3,7 +3,9 @@ import React from 'react';
 const CommunityCounts = () => {
     return (
         <div className="flex flex-col items-center space-y-8 p-8">
-            <h2 className="text-3xl font-semibold mb-8 text-center">Where numbers speak, significance echoes.</h2>
+            <h2 className="text-3xl font-semibold mb-8 text-center">Where numbers speak, <span className="bg-gradient-to-r from-purple-300 to-blue-300 text-transparent bg-clip-text inline-block">
+                significance
+            </span> echoes.</h2>
             <div className="flex flex-wrap justify-center gap-8">
                 {/* Card 1 */}
                 <div className="w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 bg-white p-6 rounded-lg shadow-lg text-center">

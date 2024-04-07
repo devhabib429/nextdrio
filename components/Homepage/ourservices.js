@@ -93,7 +93,7 @@ const OurServices = () => {
     return (
         <section className="p-8 bg-gray-200" style={{ paddingTop: '50px', paddingBottom: '150px' }}>
             <div className="max-w-screen-sm mx-auto px-2 md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-4xl font-bold mb-8 text-left">Our Services</h2>
+                <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 md:mb-12">Our Services</h2>
                 <p className="text-base font-poppins md:text-sm lg:text-md xl:text-lg mb-12 text-left">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac justo nec tortor luctus ultricies.
                 </p>

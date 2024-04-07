@@ -18,7 +18,7 @@ const Services = () => {
                 <title>NextDrio</title>
                 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" />
             </Head>
-            <Navbar textColor="white" bgColor="transparent" />
+            <Navbar textColor="black" bgColor="transparent" />
             <Servicehero />
             <ServiceSection />
             <Apply />
