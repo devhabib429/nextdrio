@@ -2,7 +2,13 @@
   {
     "id": 1,
     "name": "Vaishnavi Lilhare",
-    "designation": "Berojgar Engineer",
+    "designation": "Software Engineer",
+    "image": "/image/kellular.jpg"
+  },
+  {
+    "id": 1,
+    "name": "Vaishnavi Lilhare",
+    "designation": "Frontend Developer",
     "image": "/image/kellular.jpg"
   },
   {
