@@ -5,7 +5,9 @@ const ServiceSection = () => {
     return (
         <div className="py-8">
             <h2 className="text-3xl font-bold mt-3 mb-16 ml-8 text-center">
-                Transform Your Business with Our <br /> Tailored Solutions
+                Transform Your Business with Our <br /> <span className="bg-gradient-to-r from-purple-300 to-blue-300 text-transparent bg-clip-text inline-block">
+                    Tailored
+                </span> Solutions
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                 {servicesData.map((service, index) => (
