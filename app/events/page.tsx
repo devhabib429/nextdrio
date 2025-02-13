@@ -32,6 +32,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { sampleEvents } from "@/lib/data";
 import TabCapsule from "@/components/tab-capsule";
+import { Event } from '@/types'  // Add this import
 
 const eventCategories = [
   "All Events",
@@ -135,9 +136,13 @@ export default function EventsPage() {
     threshold: 0.1,
   });
 
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedCategory, setSelectedCategory] = useState("All Events");
 
   const categories = ["All", "Conference", "Workshop", "Meetup", "Hackathon"];
+
+  const filteredEvents = selectedCategory === "All Events"
+    ? sampleEvents
+    : sampleEvents.filter(event => event.category === selectedCategory);
 
   return (
     <div className="min-h-screen" ref={ref}>
@@ -209,21 +214,19 @@ export default function EventsPage() {
       {/* Event Grid */}
       <section className="container py-24">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {sampleEvents
-            .filter(event => selectedCategory === "All" || event.type === selectedCategory)
-            .map((event, index) => (
+          {filteredEvents.map((event: Event) => (
             <motion.div
               key={event.id}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.5, delay: event.id * 0.1 }}
               className="group rounded-xl border bg-card p-6 hover:shadow-lg transition-all"
             >
               <div className="space-y-4">
                 <div className="flex justify-between items-start">
                   <div className="space-y-2">
                     <h3 className="font-semibold group-hover:text-primary transition-colors">
-                      {event.name}
+                      {event.title}
                     </h3>
                     <p className="text-sm text-muted-foreground line-clamp-2">
                       {event.description}
@@ -245,17 +248,17 @@ export default function EventsPage() {
                   </div>
                 </div>
                   <div className="flex flex-wrap gap-2">
-                    {event.topics.map((topic) => (
+                    {event.topics?.map((topic) => (
                       <span
                         key={topic}
-                      className="px-2 py-1 text-xs rounded-full bg-secondary"
+                        className="px-2 py-1 text-xs rounded-full bg-secondary"
                       >
                         {topic}
                       </span>
                     ))}
                   </div>
                 <Button variant="outline" className="w-full group" asChild>
-                  <Link href={event.link}>
+                  <Link href={event.link || '#'}>
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Link>

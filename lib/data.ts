@@ -162,28 +162,26 @@ export const sampleProjects: Project[] = [
 
 export const sampleEvents: Event[] = [
     {
-        id: '1',
-        name: 'Tech Conference 2024',
-        description: 'Annual technology conference',
-        date: '2024-06-15',
-        location: 'San Francisco, CA',
-        time: '09:00 AM PST',
-        type: 'Conference',
-        topics: ['AI', 'Web Development', 'Cloud Computing'],
-        speakers: ['John Doe', 'Jane Smith'],
-        link: 'https://conference2024.com'
+        id: 1,
+        title: "Cloud Computing Summit 2024",
+        description: "Join us for the latest in cloud technologies and practices",
+        date: "2024-04-15",
+        time: "9:00 AM",
+        location: "Virtual",
+        topics: ["Cloud", "DevOps", "Security"],
+        link: "/events/cloud-summit-2024",
+        category: "Conferences"
     },
     {
-        id: '2',
-        name: 'Developer Workshop',
-        description: 'Hands-on coding workshop',
-        date: '2024-07-20',
-        location: 'Online',
-        time: '02:00 PM PST',
-        type: 'Workshop',
-        topics: ['JavaScript', 'React', 'TypeScript'],
-        speakers: ['Bob Wilson', 'Alice Brown'],
-        link: 'https://workshop2024.com'
+        id: 2,
+        title: "DevOps Workshop Series",
+        description: "Hands-on workshop covering modern DevOps practices",
+        date: "2024-05-01",
+        time: "2:00 PM",
+        location: "New York",
+        topics: ["CI/CD", "Automation", "Containers"],
+        link: "/events/devops-workshop",
+        category: "Workshops"
     }
 ];
 
@@ -305,4 +303,37 @@ export const industrySolutions = [
         ],
         technologies: ['IoT', 'AI/ML', 'Cloud']
     }
+];
+
+export interface Career {
+    _id: string;
+    title: string;
+    department: string;
+    location: string;
+    type: string;
+    experience: string;
+    description: string;
+    requirements: string[];
+    benefits: string[];
+    status: 'open' | 'closed';
+}
+
+export interface Inquiry {
+    _id: string;
+    type: 'contact' | 'project';
+    name: string;
+    email: string;
+    company: string;
+    message: string;
+    service?: string;
+    status: 'new' | 'inProgress' | 'completed';
+    createdAt: string;
+}
+
+export const mockCareers: Career[] = [
+    // ... your existing mock careers data
+];
+
+export const mockInquiries: Inquiry[] = [
+    // ... your existing mock inquiries data
 ];

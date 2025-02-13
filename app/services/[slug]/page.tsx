@@ -1,8 +1,8 @@
 "use client";
 
-import { useParams } from "next/navigation";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 import PageHero from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -18,214 +18,29 @@ import {
   BarChart,
   Tool
 } from "lucide-react";
+import { getService } from '@/sanity/sanity-utils'
 
-const services = {
-  devops: {
-    title: "DevOps Services",
-    description: "Transform your development and operations with modern DevOps practices",
-    gradient: "from-blue-500 to-cyan-500",
-    features: [
-      "Continuous Integration & Deployment",
-      "Infrastructure as Code",
-      "Container Orchestration",
-      "Cloud Migration",
-      "Monitoring & Logging",
-      "Security Implementation",
-    ],
-    benefits: [
-      "Faster Time to Market",
-      "Improved Reliability",
-      "Cost Optimization",
-      "Enhanced Security"
-    ],
-    technologies: ["AWS", "Azure", "Docker", "Kubernetes", "Jenkins", "Terraform"],
-    process: [
-      {
-        title: "Assessment",
-        description: "Evaluate current infrastructure and processes",
-        icon: Target
-      },
-      {
-        title: "Planning",
-        description: "Design scalable DevOps architecture",
-        icon: Tool
-      },
-      {
-        title: "Implementation",
-        description: "Set up automation and CI/CD pipelines",
-        icon: Zap
-      },
-      {
-        title: "Optimization",
-        description: "Monitor and improve performance",
-        icon: BarChart
-      }
-    ],
-    metrics: [
-      { label: "Deployment Speed", value: "10x", icon: Clock },
-      { label: "Cost Reduction", value: "40%", icon: Trophy },
-      { label: "Success Rate", value: "99.9%", icon: Target },
-      { label: "Client Satisfaction", value: "100%", icon: Users }
-    ],
-    expertise: [
-      {
-        title: "Cloud Expertise",
-        description: "Deep experience with major cloud platforms and services",
-        icon: Shield
-      },
-      {
-        title: "Automation",
-        description: "End-to-end automation of development and deployment processes",
-        icon: Zap
-      },
-      {
-        title: "Security",
-        description: "Implementation of security best practices and compliance",
-        icon: Shield
-      },
-      {
-        title: "Scalability",
-        description: "Design and implementation of scalable infrastructure",
-        icon: BarChart
-      }
-    ],
-    // Add similar structures for other services...
-  },
-  "full-stack": {
-    title: "Full Stack Development",
-    description: "End-to-end web and mobile solutions built with cutting-edge technologies",
-    gradient: "from-purple-500 to-pink-500",
-    features: [
-      "Web Applications",
-      "Mobile Development",
-      "API Integration",
-      "Database Design",
-      "UI/UX Design",
-      "Performance Optimization",
-    ],
-    benefits: [
-      "Scalable Solutions",
-      "Modern Architecture",
-      "Cross-platform Support",
-      "Optimized Performance"
-    ],
-    technologies: ["React", "Node.js", "Python", "MongoDB", "PostgreSQL", "Redis"],
-    process: [
-      {
-        title: "Discovery",
-        description: "Understand requirements and objectives"
-      },
-      {
-        title: "Design",
-        description: "Create architecture and UI/UX designs"
-      },
-      {
-        title: "Development",
-        description: "Build and test the application"
-      },
-      {
-        title: "Deployment",
-        description: "Launch and maintain the solution"
-      }
-    ]
-  },
-  erpnext: {
-    title: "ERPNext Services",
-    description: "Comprehensive business management solutions powered by ERPNext",
-    gradient: "from-green-500 to-emerald-500",
-    features: [
-      "Implementation",
-      "Customization",
-      "Integration",
-      "Training",
-      "Support",
-      "Maintenance",
-    ],
-    benefits: [
-      "Streamlined Operations",
-      "Real-time Analytics",
-      "Cost Reduction",
-      "Enhanced Productivity"
-    ],
-    technologies: ["ERPNext", "Python", "MariaDB", "Redis", "Node.js", "Docker"],
-    process: [
-      {
-        title: "Analysis",
-        description: "Evaluate business requirements"
-      },
-      {
-        title: "Configuration",
-        description: "Set up and customize ERPNext"
-      },
-      {
-        title: "Integration",
-        description: "Connect with existing systems"
-      },
-      {
-        title: "Training",
-        description: "Train staff and provide documentation"
-      }
-    ]
-  },
-  uiux: {
-    title: "UI/UX Design Services",
-    description: "Create exceptional user experiences with modern design principles",
-    gradient: "from-orange-500 to-yellow-500",
-    features: [
-      "User Research",
-      "Wireframing",
-      "Prototyping",
-      "Visual Design",
-      "Usability Testing",
-      "Design Systems",
-    ],
-    benefits: [
-      "Enhanced User Satisfaction",
-      "Increased Conversion Rates",
-      "Reduced Development Time",
-      "Brand Consistency"
-    ],
-    technologies: ["Figma", "Adobe XD", "Sketch", "InVision", "Principle", "Zeplin"],
-    process: [
-      {
-        title: "Research",
-        description: "Understand users and competitors"
-      },
-      {
-        title: "Design",
-        description: "Create wireframes and visual designs"
-      },
-      {
-        title: "Prototype",
-        description: "Build interactive prototypes"
-      },
-      {
-        title: "Test",
-        description: "Conduct usability testing"
-      }
-    ]
-  }
-};
-
-// Add this function to generate static paths
-export function generateStaticParams() {
-  return Object.keys(services).map((slug) => ({
-    slug,
-  }));
+interface PageParams {
+  params: Promise<{ slug: string }>
 }
 
-export default function ServicePage() {
+export default function ServicePage({ params }: PageParams) {
+  const [service, setService] = useState<any>(null);
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const { slug } = useParams();
-  const service = services[slug as keyof typeof services];
+  useEffect(() => {
+    const loadService = async () => {
+      const resolvedParams = await params;
+      const data = await getService(resolvedParams.slug);
+      setService(data);
+    };
+    loadService();
+  }, [params]);
 
-  if (!service) {
-    return <div>Service not found</div>;
-  }
+  if (!service) return <div>Loading...</div>;
 
   return (
     <div className="min-h-screen" ref={ref}>

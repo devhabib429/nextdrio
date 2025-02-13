@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from 'react'
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { 
@@ -46,6 +47,8 @@ export default function HomePage() {
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const [showContactDialog, setShowContactDialog] = useState(false);
 
   return (
     <div className="min-h-screen" ref={ref}>

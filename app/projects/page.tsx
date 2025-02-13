@@ -136,7 +136,7 @@ export default function Projects() {
                 </div>
                 <CardContent className="p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    {project.tags.map((tag) => (
+                    {project.tags?.map((tag) => (
                       <span
                         key={tag}
                         className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"

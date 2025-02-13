@@ -24,8 +24,7 @@ import {
   Target,
   Zap,
   BarChart,
-  Tool,
-  Palette,
+  Wrench,
   Brain,
   Building2,
   Users,
@@ -81,7 +80,7 @@ const services = [
   {
     title: "UI/UX Design",
     description: "Create exceptional user experiences with modern design principles",
-    icon: Palette,
+    icon: Wrench,
     features: [
       "User Research",
       "Wireframing",
@@ -141,7 +140,7 @@ const benefits = [
   {
     title: "Custom Solutions",
     description: "Tailored approaches for unique challenges",
-    icon: Tool
+    icon: Wrench
   }
 ];
 

@@ -31,16 +31,18 @@ export interface Project {
 }
 
 export interface Event {
-  id: string;
-  name: string;
+  id: number;
+  title: string;
+  description: string;
   date: string;
+  time: string;
   location: string;
-  description?: string;
-  time?: string;
-  type?: string;
   topics?: string[];
+  link: string;
+  category: string;
+  type?: string;
   speakers?: string[];
-  link?: string;
+  name?: string;
 }
 
 export interface Stats {
