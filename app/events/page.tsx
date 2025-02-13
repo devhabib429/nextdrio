@@ -244,16 +244,16 @@ export default function EventsPage() {
                     <span>{event.time}</span>
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {event.topics.map((topic) => (
-                    <span
-                      key={topic}
+                  <div className="flex flex-wrap gap-2">
+                    {event.topics.map((topic) => (
+                      <span
+                        key={topic}
                       className="px-2 py-1 text-xs rounded-full bg-secondary"
-                    >
-                      {topic}
-                    </span>
-                  ))}
-                </div>
+                      >
+                        {topic}
+                      </span>
+                    ))}
+                  </div>
                 <Button variant="outline" className="w-full group" asChild>
                   <Link href={event.link}>
                     Learn More
@@ -315,7 +315,7 @@ export default function EventsPage() {
               Join Community <Users className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-        </div>
+      </div>
       </section>
     </div>
   );
