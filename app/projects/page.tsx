@@ -15,6 +15,28 @@ import TabCapsule from "@/components/tab-capsule";
 import ContactDialog from "@/components/contact-dialog";
 import { useInView } from "react-intersection-observer";
 
+interface Project {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  url: string;
+  category: string;
+  tags: string[];
+  metrics: {
+    stars: number;
+    forks: number;
+    contributors: number;
+  };
+  impact?: string[];
+  timeline: string;
+  status: string;
+  testimonials: string[];
+  technologies: string[];
+  link: string;
+  github: string;
+}
+
 const categories = [
   "All",
   "DevOps",
@@ -32,7 +54,7 @@ export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [showContactDialog, setShowContactDialog] = useState(false);
-  
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -149,10 +171,10 @@ export default function Projects() {
                   <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
                   <p className="text-muted-foreground mb-4">{project.description}</p>
 
-                  <div className="mb-6">
+                  <div className="mt-4">
                     <h4 className="text-sm font-semibold mb-2">Key Impacts</h4>
                     <ul className="grid grid-cols-2 gap-2">
-                      {project.impact.map((impact) => (
+                      {project.impact && project.impact.map((impact) => (
                         <li key={impact} className="flex items-center text-sm">
                           <ArrowRight className="h-4 w-4 mr-2 text-primary" />
                           {impact}
@@ -164,7 +186,7 @@ export default function Projects() {
                   <div className="mb-6">
                     <h4 className="text-sm font-semibold mb-2">Technologies</h4>
                     <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
+                      {project.technologies?.map((tech) => (
                         <span
                           key={tech}
                           className="px-2 py-1 text-xs rounded-full bg-secondary text-secondary-foreground"
@@ -179,15 +201,15 @@ export default function Projects() {
                     <div className="flex items-center gap-4">
                       <div className="flex items-center">
                         <Star className="h-4 w-4 mr-1 text-primary" />
-                        <span className="text-sm">{project.metrics.stars}</span>
+                        <span className="text-sm">{project.metrics?.stars}</span>
                       </div>
                       <div className="flex items-center">
                         <GitFork className="h-4 w-4 mr-1 text-primary" />
-                        <span className="text-sm">{project.metrics.forks}</span>
+                        <span className="text-sm">{project.metrics?.forks}</span>
                       </div>
                       <div className="flex items-center">
                         <Users className="h-4 w-4 mr-1 text-primary" />
-                        <span className="text-sm">{project.metrics.contributors}</span>
+                        <span className="text-sm">{project.metrics?.contributors}</span>
                       </div>
                     </div>
                   </div>
@@ -232,7 +254,7 @@ export default function Projects() {
       <ProjectProcess />
 
       {/* Project Impact Metrics */}
-      <section 
+      <section
         ref={ref}
         className="container py-24 bg-gradient-to-b from-background to-secondary/10 rounded-3xl"
       >
@@ -433,9 +455,9 @@ export default function Projects() {
             <motion.div
               key={stack.category}
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              animate={inView ? { 
-                opacity: 1, 
-                y: 0, 
+              animate={inView ? {
+                opacity: 1,
+                y: 0,
                 scale: 1,
                 transition: {
                   duration: 0.5,
@@ -443,7 +465,7 @@ export default function Projects() {
                   ease: "easeOut"
                 }
               } : {}}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.2 }
               }}
@@ -477,7 +499,7 @@ export default function Projects() {
                   </motion.div>
                   <h3 className="font-semibold text-lg">{stack.category}</h3>
                 </div>
-                
+
                 <div className="space-y-3">
                   {stack.techs.map((tech, techIndex) => (
                     <motion.div
@@ -496,7 +518,7 @@ export default function Projects() {
                         hover:bg-background/80 transition-colors duration-300"
                     >
                       <motion.span
-                        animate={{ 
+                        animate={{
                           scale: [1, 1.2, 1],
                           rotate: [0, 10, -10, 0]
                         }}
@@ -543,8 +565,8 @@ export default function Projects() {
         </div>
       </motion.div>
 
-      <ContactDialog 
-        open={showContactDialog} 
+      <ContactDialog
+        open={showContactDialog}
         onOpenChange={setShowContactDialog}
       />
     </div>

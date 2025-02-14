@@ -1,11 +1,27 @@
 export interface Service {
   id: string;
-  name: string;
+  title: string;
   description: string;
-  icon: string;
-  features?: string[];
-  benefits?: string[];
-  technologies?: string[];
+  gradient: string;
+  metrics: Array<{
+    label: string;
+    value: string;
+    icon: React.ElementType;
+  }>;
+  features: string[];
+  benefits: string[];
+  process: Array<{
+    title: string;
+    description: string;
+    icon: React.ElementType;
+  }>;
+  expertise: Array<{
+    title: string;
+    description: string;
+    icon: React.ElementType;
+  }>;
+  technologies: string[];
+  slug: string;
 }
 
 export interface Project {
