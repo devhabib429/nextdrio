@@ -2,12 +2,11 @@
 
 import { useState } from 'react'
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { 
-  ArrowRight, 
-  Code2, 
-  Database, 
-  Server, 
+import {
+  ArrowRight,
+  Code2,
+  Database,
+  Server,
   Palette,
   Zap,
   Globe,
@@ -43,428 +42,185 @@ import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 
 export default function HomePage() {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
-
   const [showContactDialog, setShowContactDialog] = useState(false);
 
   return (
-    <div className="min-h-screen" ref={ref}>
-      <section className="relative h-screen flex items-center">
+    <main className="relative w-full min-h-screen overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-[90vh] flex items-center py-16 sm:py-20">
         {/* Animated Background */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-grid-white/10 z-0" />
           <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background z-0" />
-          
+
           {/* Animated Circles */}
-          <motion.div
-            animate={{ 
-              scale: [1, 1.2, 1],
-              rotate: [0, 90, 180],
-              opacity: [0.3, 0.5, 0.3] 
-            }}
-            transition={{ duration: 15, repeat: Infinity }}
-            className="absolute -top-24 -left-24 w-96 h-96 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-full blur-3xl"
-          />
-          <motion.div
-            animate={{ 
-              scale: [1.2, 1, 1.2],
-              rotate: [180, 270, 360],
-              opacity: [0.5, 0.3, 0.5] 
-            }}
-            transition={{ duration: 15, repeat: Infinity, delay: 1 }}
-            className="absolute -bottom-24 -right-24 w-96 h-96 bg-gradient-to-r from-secondary/30 to-primary/30 rounded-full blur-3xl"
-          />
+          <div className="hidden sm:block">
+            <motion.div
+              animate={{
+                scale: [1, 1.2, 1],
+                rotate: [0, 90, 180],
+                opacity: [0.3, 0.5, 0.3]
+              }}
+              transition={{ duration: 15, repeat: Infinity }}
+              className="absolute -top-24 -left-24 w-96 h-96 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-full blur-3xl"
+            />
+            <motion.div
+              animate={{
+                scale: [1.2, 1, 1.2],
+                rotate: [180, 270, 360],
+                opacity: [0.5, 0.3, 0.5]
+              }}
+              transition={{ duration: 15, repeat: Infinity, delay: 1 }}
+              className="absolute -bottom-24 -right-24 w-96 h-96 bg-gradient-to-r from-secondary/30 to-primary/30 rounded-full blur-3xl"
+            />
+          </div>
         </div>
 
         {/* Hero Content */}
-        <div className="container relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            className="max-w-4xl mx-auto text-center space-y-8"
-          >
-            <motion.h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 }}
-            >
+        <div className="container relative z-10 px-4 sm:px-6">
+          <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
               Transform Your Ideas Into
               <span className="block mt-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Digital Reality
               </span>
-            </motion.h1>
-            
-            <motion.p
-              className="text-xl text-muted-foreground max-w-2xl mx-auto"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.3 }}
-            >
-              Innovative solutions for modern businesses. We help you stay ahead in the digital era.
-            </motion.p>
+            </h1>
 
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.4 }}
-            >
-              <Button size="lg" onClick={() => setShowContactDialog(true)}>
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+              Innovative solutions for modern businesses. We help you stay ahead in the digital era.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+              <Button size="lg" className="w-full sm:w-auto" onClick={() => setShowContactDialog(true)}>
                 Get Started <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
                 <Link href="/projects">
                   View Projects <ExternalLink className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
-          <ChevronDown className="w-6 h-6 text-muted-foreground" />
-        </motion.div>
+        <div className="hidden sm:block">
+          <motion.div
+            className="absolute bottom-8 left-1/2 -translate-x-1/2"
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            <ChevronDown className="w-6 h-6 text-muted-foreground" />
+          </motion.div>
+        </div>
       </section>
 
-      {/* New: Success Metrics Section */}
-      <div className="container py-24 bg-gradient-to-b from-background to-secondary/10">
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {successMetrics.map((metric, index) => (
-            <motion.div
-              key={metric.label}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center p-6 rounded-2xl bg-white/50 backdrop-blur-sm border"
-            >
-              <metric.icon className="w-8 h-8 mx-auto mb-4 text-primary" />
-              <div className="text-3xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-                {metric.value}
-              </div>
-              <p className="text-muted-foreground mt-2">{metric.label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* New: Why Choose Us Section */}
-      <div className="container py-24 relative">
-        {/* Animated Background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background opacity-50" />
-        
-        <SectionHeader
-          title="Why Choose Us"
-          subtitle="Delivering excellence through innovation and expertise"
-        />
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
-          {whyChooseUs.map((reason, index) => (
-            <motion.div
-              key={reason.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border bg-background/50 backdrop-blur-sm p-8 hover:shadow-xl transition-all duration-500"
-            >
-              {/* Animated Border */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/50 via-secondary/50 to-primary/50 opacity-0 group-hover:opacity-100 transition-all duration-500" style={{ padding: '1px' }}>
-                <div className="h-full w-full bg-background/95" />
-              </div>
-
-              <div className="relative z-10">
-                <div className="mb-6 p-4 rounded-xl bg-primary/5 w-fit group-hover:scale-110 transition-transform duration-500">
-                  <reason.icon className="w-8 h-8 text-primary group-hover:animate-pulse" />
-                </div>
-                
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors duration-300">
-                  {reason.title}
-                </h3>
-                
-                <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                  {reason.description}
-                </p>
-              </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute -right-12 -top-12 w-24 h-24 bg-primary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-              <div className="absolute -left-12 -bottom-12 w-24 h-24 bg-secondary/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Core Services Grid */}
-      <div className="container py-24">
-        <SectionHeader 
-          title="Core Services" 
-          subtitle="Comprehensive solutions for modern businesses"
-        />
-        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border bg-gradient-to-br from-background to-background/50 p-6 hover:shadow-2xl transition-all duration-500"
-            >
-              {/* Animated Background Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              {/* Icon Container */}
-              <div className="relative z-10">
-                <div className="mb-4 p-3 rounded-xl bg-primary/5 w-fit group-hover:scale-110 transition-transform duration-500">
-                  <feature.icon className="w-6 h-6 text-primary group-hover:animate-pulse" />
-                </div>
-                
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                
-                <p className="text-muted-foreground group-hover:text-foreground transition-colors duration-300">
-                  {feature.description}
-                </p>
-              </div>
-
-              {/* Hover Effect Corner */}
-              <div className="absolute -right-2 -top-2 w-16 h-16 bg-gradient-to-br from-primary/20 to-secondary/20 blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-500" />
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
-
-      {/* New: Advanced Solutions Section */}
-      <div className="container py-24 bg-secondary/5 rounded-3xl">
-        <SectionHeader 
-          title="Advanced Technology Solutions" 
-          subtitle="Cutting-edge solutions for the digital age"
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {advancedSolutions.map((solution, index) => (
-            <motion.div
-              key={solution.title}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="enhanced-card hover:bg-secondary/10"
-            >
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-xl bg-primary/5 group-hover:scale-110 transition-transform">
-                  <solution.icon className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">{solution.title}</h3>
-                  <p className="text-muted-foreground mb-4">{solution.description}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {solution.technologies.map((tech) => (
-                      <span key={tech} className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Stats Section */}
-      <section className="container py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5" />
-        
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10"
-        >
-          {[
-            { value: "500+", label: "Projects Completed", icon: Trophy },
-            { value: "98%", label: "Client Satisfaction", icon: Heart },
-            { value: "24/7", label: "Support Available", icon: Headphones },
-            { value: "50+", label: "Expert Team", icon: Users }
-          ].map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center group"
-            >
-              <div className="mb-4 mx-auto w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                <stat.icon className="w-8 h-8 text-primary" />
-              </div>
-              <h3 className="text-3xl font-bold mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                {stat.value}
-              </h3>
-              <p className="text-muted-foreground">{stat.label}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* Industry Solutions Section */}
-      <div className="container py-24">
-        <SectionHeader 
-          title="Industry Solutions" 
-          subtitle="Specialized solutions for diverse sectors"
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industrySolutions.map((industry, index) => (
-            <motion.div
-              key={industry.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border hover:shadow-xl transition-all duration-300"
-            >
-              <div className="aspect-video relative overflow-hidden">
-                <Image
-                  src={industry.image}
-                  alt={industry.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              </div>
-              <div className="absolute bottom-0 p-6 text-white">
-                <h3 className="text-xl font-semibold mb-2">{industry.title}</h3>
-                <p className="text-sm text-white/80 mb-4">{industry.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {industry.tags.map((tag) => (
-                    <span 
-                      key={tag}
-                      className="text-xs px-2 py-1 rounded-full bg-white/20 backdrop-blur-sm"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* New: Latest Technologies Section */}
-      <div className="container py-24 bg-gradient-to-r from-primary/5 to-secondary/5 rounded-3xl">
-        <SectionHeader
-          title="Latest Technologies"
-          subtitle="Stay ahead with cutting-edge tech stack"
-        />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {technologies.map((tech, index) => (
-            <motion.div
-              key={tech.name}
-              initial={{ opacity: 0, scale: 0.5 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center group"
-            >
-              <div className="mb-4 p-4 rounded-xl bg-white/50 backdrop-blur-sm border group-hover:shadow-lg transition-all duration-300 mx-auto w-fit">
-                <tech.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
-              </div>
-              <h4 className="font-semibold">{tech.name}</h4>
-              <p className="text-sm text-muted-foreground">{tech.description}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5 }}
-        className="container py-24 text-center"
-      >
-        <div className="max-w-2xl mx-auto space-y-8">
-          <h2 className="text-4xl font-bold">Ready to Transform Your Business?</h2>
-          <p className="text-xl text-muted-foreground">
-            Let's discuss how our solutions can help you achieve your goals
-          </p>
-          <Button asChild size="lg" className="group">
-            <Link href="/contact">
-              Get Started 
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Button>
-        </div>
-      </motion.div>
-
-      {/* Testimonials Section */}
-      <section className="container py-24 relative overflow-hidden">
-        <SectionHeader
-          title="What Our Clients Say"
-          subtitle="Trusted by businesses worldwide"
-        />
-        
-        <div className="mt-16 relative">
-          {/* Background Elements */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5 rounded-3xl" />
-          
-          <div className="grid md:grid-cols-3 gap-8 relative z-10">
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative"
+      {/* Success Metrics Section */}
+      <section className="py-12 sm:py-24 px-4">
+        <div className="container">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {successMetrics.map((metric, index) => (
+              <div
+                key={metric.label}
+                className="text-center p-6 rounded-2xl bg-white/50 backdrop-blur-sm border"
               >
-                {/* Hover Effect Background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                {/* Card Content */}
-                <div className="relative p-8 rounded-2xl border bg-background/50 backdrop-blur-sm hover:shadow-xl transition-all duration-500">
-                  {/* Quote Icon */}
-                  <div className="absolute -top-4 -left-4 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                    <Quote className="w-4 h-4 text-primary" />
-                  </div>
-                  
-                  <div className="mb-6">
-                    <p className="text-muted-foreground italic">{testimonial.content}</p>
-                  </div>
-                  
-                  <div className="flex items-center gap-4">
-                    <div className="relative">
-                      <div className="w-12 h-12 rounded-full overflow-hidden">
-                        <Image
-                          src={testimonial.avatar}
-                          alt={testimonial.name}
-                          width={48}
-                          height={48}
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-primary/10 rounded-full flex items-center justify-center">
-                        <Star className="w-2 h-2 text-primary" />
-                      </div>
-                    </div>
-                    
-                    <div>
-                      <h4 className="font-semibold group-hover:text-primary transition-colors duration-300">
-                        {testimonial.name}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+                <metric.icon className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-base sm:text-lg font-semibold mb-2">{metric.label}</h3>
+                <p className="text-2xl sm:text-3xl font-bold text-primary">{metric.value}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
-    </div>
+
+      {/* Why Choose Us Section */}
+      <section className="py-12 sm:py-24 px-4 relative">
+        <div className="container relative z-10">
+          <SectionHeader
+            title="Why Choose Us"
+            subtitle="Delivering excellence through innovation and expertise"
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {whyChooseUs.map((reason) => (
+              <div
+                key={reason.title}
+                className="group relative overflow-hidden rounded-2xl border bg-background/50 backdrop-blur-sm p-6 sm:p-8 hover:shadow-xl transition-all duration-500"
+              >
+                <div className="relative z-10">
+                  <div className="mb-6 p-4 rounded-xl bg-primary/5 w-fit">
+                    <reason.icon className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3">
+                    {reason.title}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {reason.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-12 sm:py-24 px-4 bg-muted/50">
+        <div className="container">
+          <SectionHeader
+            title="Technologies We Use"
+            subtitle="Cutting-edge solutions for modern challenges"
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {technologies.map((tech) => (
+              <div
+                key={tech.name}
+                className="p-6 rounded-lg border bg-background/50 backdrop-blur-sm text-center"
+              >
+                <tech.icon className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-lg font-semibold mb-2">{tech.name}</h3>
+                <p className="text-sm text-muted-foreground">{tech.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-12 sm:py-24 px-4">
+        <div className="container">
+          <SectionHeader
+            title="What Our Clients Say"
+            subtitle="Real feedback from real clients"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {testimonials.map((testimonial) => (
+              <div
+                key={testimonial.name}
+                className="p-6 rounded-lg border bg-background"
+              >
+                <Quote className="w-8 h-8 text-primary mb-4" />
+                <p className="text-muted-foreground mb-4">{testimonial.content}</p>
+                <div className="flex items-center gap-4">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden">
+                    <Image
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">{testimonial.name}</h4>
+                    <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }
 
