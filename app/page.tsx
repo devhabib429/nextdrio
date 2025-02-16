@@ -37,7 +37,11 @@ import {
   Star,
   CheckCircle2,
   ShoppingBag,
-  Rocket
+  Rocket,
+  GraduationCap,
+  Home,
+  Truck,
+  Leaf
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -171,34 +175,48 @@ export default function HomePage() {
       </section>
 
       {/* Industries We Serve Section */}
-      <section className="py-12 sm:py-24 px-4 bg-muted dark:bg-muted/50">
+      <section className="py-16 sm:py-24 px-4">
         <div className="container">
           <SectionHeader
             title="Industries We Serve"
-            subtitle="Tailored solutions for diverse industry verticals"
+            subtitle="Innovative solutions across diverse sectors"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {industries.map((industry, index) => (
-              <div
+              <motion.div
                 key={industry.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-2xl border bg-card dark:bg-card/50 backdrop-blur-sm p-6 hover:shadow-xl transition-all duration-500"
               >
+                {/* Gradient Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${industry.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
                 <div className="relative z-10">
-                  <div className="mb-6 p-4 rounded-xl bg-primary/5 w-fit">
+                  <div className="mb-6 p-4 rounded-xl bg-primary/5 w-fit group-hover:bg-primary/10 transition-colors duration-500">
                     <industry.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-4">{industry.title}</h3>
-                  <p className="text-muted-foreground mb-6">{industry.description}</p>
+                  <h3 className="text-xl font-semibold mb-4 group-hover:text-primary transition-colors duration-500">
+                    {industry.title}
+                  </h3>
+                  <p className="text-muted-foreground mb-6 group-hover:text-foreground/80 transition-colors duration-500">
+                    {industry.description}
+                  </p>
                   <ul className="space-y-2">
                     {industry.features.map((feature) => (
-                      <li key={feature} className="text-sm text-muted-foreground flex items-center">
-                        <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
-                        {feature}
+                      <li
+                        key={feature}
+                        className="text-sm text-muted-foreground flex items-center group-hover:text-foreground/80 transition-colors duration-500"
+                      >
+                        <CheckCircle2 className="w-4 h-4 mr-2 text-primary shrink-0" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -573,25 +591,57 @@ const industries = [
     title: "Healthcare",
     description: "Digital solutions for modern healthcare providers",
     icon: Heart,
-    features: ["Patient Management", "Telemedicine", "Health Analytics"]
+    features: ["Patient Management", "Telemedicine", "Health Analytics", "Medical IoT"],
+    gradient: "from-red-500/20 to-pink-500/20"
   },
   {
     title: "Manufacturing",
     description: "Industry 4.0 solutions for smart manufacturing",
     icon: Building2,
-    features: ["IoT Integration", "Process Automation", "Quality Control"]
+    features: ["IoT Integration", "Process Automation", "Quality Control", "Predictive Maintenance"],
+    gradient: "from-blue-500/20 to-cyan-500/20"
   },
   {
     title: "Finance",
     description: "Fintech solutions for the modern financial sector",
     icon: LineChart,
-    features: ["Payment Processing", "Risk Management", "Fraud Detection"]
+    features: ["Payment Processing", "Risk Management", "Fraud Detection", "Blockchain Integration"],
+    gradient: "from-green-500/20 to-emerald-500/20"
   },
   {
     title: "Retail",
     description: "Digital transformation for retail businesses",
     icon: ShoppingBag,
-    features: ["Inventory Management", "POS Systems", "E-commerce"]
+    features: ["Inventory Management", "POS Systems", "E-commerce", "Customer Analytics"],
+    gradient: "from-purple-500/20 to-violet-500/20"
+  },
+  {
+    title: "Education",
+    description: "Smart solutions for modern education",
+    icon: GraduationCap,
+    features: ["Learning Management", "Student Analytics", "Virtual Classrooms", "Content Delivery"],
+    gradient: "from-yellow-500/20 to-orange-500/20"
+  },
+  {
+    title: "Real Estate",
+    description: "Digital solutions for property management",
+    icon: Home,
+    features: ["Property Management", "Virtual Tours", "Smart Buildings", "Market Analytics"],
+    gradient: "from-indigo-500/20 to-blue-500/20"
+  },
+  {
+    title: "Logistics",
+    description: "Smart solutions for supply chain management",
+    icon: Truck,
+    features: ["Fleet Management", "Route Optimization", "Inventory Tracking", "Real-time Analytics"],
+    gradient: "from-teal-500/20 to-green-500/20"
+  },
+  {
+    title: "Agriculture",
+    description: "Technology solutions for modern farming",
+    icon: Leaf,
+    features: ["Smart Farming", "Crop Management", "IoT Sensors", "Weather Analytics"],
+    gradient: "from-lime-500/20 to-green-500/20"
   }
 ];
 
