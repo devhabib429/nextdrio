@@ -95,6 +95,28 @@
   animation: float 3s ease-in-out infinite;
 }
 
+/* Add these new animations and styles */
+@keyframes float-delayed {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float-delayed {
+  animation: float-delayed 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.hero-text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 /* Gradient animations */
 .gradient-animate {
   background-size: 200% 200%;
@@ -191,4 +213,68 @@
     black 98%,
     transparent
   );
+}
+
+/* Enhanced background patterns */
+.bg-pattern {
+  background-image: 
+    radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 8%),
+    radial-gradient(circle at 40% 60%, rgba(255,255,255,0.1) 0%, transparent 12%);
+  background-position: 0 0, 0 0;
+  background-size: 16px 16px;
+  background-repeat: repeat;
+}
+
+/* Add these new animations and styles */
+@keyframes grid-flow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(32px);
+  }
+}
+
+.animate-grid-flow {
+  animation: grid-flow 20s linear infinite;
+}
+
+.hero-text-glow {
+  text-shadow: 
+    0 0 10px rgba(255,255,255,0.3),
+    0 0 20px rgba(255,255,255,0.2),
+    0 0 30px rgba(255,255,255,0.1);
+}
+
+/* Enhanced glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-panel {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    #fff,
+    #fff 50%,
+    rgba(255, 255, 255, 0.7) 50%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 0.5s ease;
+}
+
+.gradient-text:hover {
+  background-position: 0%;
 }
