@@ -278,3 +278,118 @@
 .gradient-text:hover {
   background-position: 0%;
 }
+
+/* Add these new styles for enhanced service cards */
+.service-card-glow {
+  position: relative;
+}
+
+.service-card-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 0%, 
+    rgba(120, 119, 198, 0.1),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card-glow:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced gradient animations */
+.gradient-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* Modern Service Card Styles */
+.service-card-modern {
+  @apply relative p-8 rounded-2xl border bg-background/50 backdrop-blur-sm
+         transition-all duration-300 hover:shadow-xl hover:border-primary/50;
+}
+
+.service-icon-wrapper {
+  @apply mb-6 p-4 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600
+         w-16 h-16 flex items-center justify-center
+         transition-transform duration-300 group-hover:scale-110;
+}
+
+.service-button {
+  @apply bg-gradient-to-r from-violet-600 to-indigo-600
+         hover:from-violet-700 hover:to-indigo-700 border-0
+         transition-all duration-300 transform group-hover:translate-y-0;
+}
+
+.service-card-decoration {
+  @apply absolute inset-0 bg-gradient-to-r from-violet-600/5 to-indigo-600/5
+         rounded-2xl blur-xl opacity-0 group-hover:opacity-100
+         transition-opacity duration-300 -z-10;
+}
+
+/* Process Timeline Styles */
+.process-timeline {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-8 relative;
+}
+
+.process-step {
+  @apply relative p-6 text-center;
+}
+
+.process-number {
+  @apply w-12 h-12 rounded-full bg-primary/10 text-primary
+         flex items-center justify-center text-xl font-bold
+         mx-auto transition-transform duration-300 hover:scale-110;
+}
+
+/* Add connecting lines between process steps */
+@screen md {
+  .process-timeline::before {
+    content: '';
+    @apply absolute top-14 left-0 w-full h-0.5 bg-primary/10;
+  }
+  
+  .process-step::before {
+    content: '';
+    @apply absolute top-14 left-1/2 w-0.5 h-full bg-primary/10;
+  }
+}
+
+/* Enhanced hover effects */
+.service-card-modern:hover {
+  transform: translateY(-5px);
+}
+
+.process-step:hover .process-number {
+  @apply bg-primary text-white;
+}
