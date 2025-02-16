@@ -22,8 +22,14 @@ const getIconName = (icon: any) => {
   return (icon?.render?.displayName || icon?.displayName || 'Trophy') as string;
 };
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const service = services[params.slug as keyof typeof services];
+interface PageProps {
+  params: Promise<{ slug: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const resolvedParams = await params;
+  const service = services[resolvedParams.slug as keyof typeof services];
   return service ? {
     title: `${service.title} - NextDrio`,
     description: service.description
@@ -33,8 +39,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function ServicePage({ params }: { params: { slug: string } }) {
-  const service = services[params.slug as keyof typeof services];
+export default async function ServicePage({ params }: PageProps) {
+  const resolvedParams = await params;
+  const service = services[resolvedParams.slug as keyof typeof services];
 
   if (!service) {
     redirect('/services');
