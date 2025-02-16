@@ -23,7 +23,8 @@ import {
   Sparkles,
   Braces,
   Brain,
-  Lightbulb
+  Lightbulb,
+  Award
 } from "lucide-react";
 import ContactDialog from "@/components/contact-dialog";
 import Link from "next/link";
@@ -136,11 +137,115 @@ export default function Services() {
 
   return (
     <div className="min-h-screen" ref={ref}>
-      <PageHero
-        title="Our Services"
-        description="Comprehensive technology solutions tailored to your business needs"
-        gradient="from-violet-600 to-indigo-600"
-      />
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-background via-background/90 to-background/50">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/5 via-primary/2 to-transparent blur-3xl transform -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-full h-full bg-gradient-to-tl from-secondary/5 via-secondary/2 to-transparent blur-3xl transform translate-y-1/2" />
+        </div>
+
+        <div className="container relative z-10 mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="text-center space-y-8">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-block"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-primary/10 blur-xl" />
+                  <div className="relative bg-background/80 backdrop-blur-sm border rounded-2xl px-6 py-2">
+                    <span className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
+                      Innovative Solutions for Modern Businesses
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-6xl md:text-7xl font-bold tracking-tight"
+              >
+                Transform Your
+                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-primary via-primary/80 to-primary/60">
+                  Digital Presence
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              >
+                Elevate your business with our comprehensive suite of technology solutions,
+                from DevOps excellence to ERPNext implementations.
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap justify-center gap-4 mt-8"
+              >
+                <Button size="lg" className="group relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/50 to-primary opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <span className="relative">Explore Services</span>
+                  <ArrowRight className="relative ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="group hover:border-primary/50 transition-colors"
+                >
+                  <span>View Case Studies</span>
+                </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
+              >
+                {[
+                  { icon: Cloud, label: 'Cloud Native', value: '100+' },
+                  { icon: Users, label: 'Happy Clients', value: '500+' },
+                  { icon: Code2, label: 'Projects', value: '1000+' },
+                  { icon: Award, label: 'Awards', value: '50+' }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10 blur-xl group-hover:opacity-75 transition-opacity" />
+                    <div className="relative p-6 text-center">
+                      <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+                      <div className="font-bold text-2xl mb-1">{stat.value}</div>
+                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Decorative elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/4 h-[2px] bg-gradient-to-r from-transparent via-primary/40 to-transparent blur-sm" />
+      </section>
 
       {/* Services Section with Enhanced Header */}
       <section className="container py-24">

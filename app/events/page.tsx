@@ -146,11 +146,132 @@ export default function EventsPage() {
 
   return (
     <div className="min-h-screen" ref={ref}>
-      <PageHero
-        title="Upcoming Events"
-        description="Join our tech community events and stay connected with the latest trends and innovations"
-        gradient="from-blue-500 to-purple-500"
-      />
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-background via-background/90 to-background/50">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              rotate: [0, 45, 0],
+              opacity: [0.3, 0.2, 0.3]
+            }}
+            transition={{ duration: 20, repeat: Infinity }}
+            className="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-br from-violet-500/10 via-purple-500/10 to-transparent blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              rotate: [45, 0, 45],
+              opacity: [0.2, 0.3, 0.2]
+            }}
+            transition={{ duration: 20, repeat: Infinity, delay: 10 }}
+            className="absolute -bottom-1/2 right-0 w-full h-full bg-gradient-to-tl from-purple-500/10 via-violet-500/10 to-transparent blur-3xl"
+          />
+        </div>
+
+        <div className="container relative z-10 mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="text-center space-y-8">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-block"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-violet-500/20 to-purple-500/20 blur-xl" />
+                  <div className="relative bg-background/80 backdrop-blur-sm border rounded-2xl px-6 py-2">
+                    <span className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-purple-500">
+                      Connect & Learn
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-6xl md:text-7xl font-bold tracking-tight"
+              >
+                Join Our
+                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-violet-400 to-purple-400">
+                  Tech Events
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              >
+                Discover workshops, webinars, and conferences that help you stay ahead
+                in the tech world
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap justify-center gap-4 mt-8"
+              >
+                <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-violet-500 to-purple-500 hover:from-violet-600 hover:to-purple-600">
+                  <Calendar className="mr-2 h-4 w-4" />
+                  <span className="relative">Upcoming Events</span>
+                  <ArrowRight className="relative ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="group hover:border-violet-500/50 transition-colors"
+                >
+                  <Video className="mr-2 h-4 w-4" />
+                  Watch Past Events
+                </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
+              >
+                {[
+                  { icon: Calendar, label: 'Annual Events', value: '20+' },
+                  { icon: Users, label: 'Attendees', value: '5000+' },
+                  { icon: Globe, label: 'Countries', value: '25+' },
+                  { icon: Mic2, label: 'Speakers', value: '100+' }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-violet-500/5 to-purple-500/5 blur-xl group-hover:opacity-75 transition-opacity" />
+                    <div className="relative p-6 text-center">
+                      <stat.icon className="w-8 h-8 text-violet-500 mx-auto mb-3" />
+                      <div className="font-bold text-2xl mb-1">{stat.value}</div>
+                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Decorative elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/4 h-[2px] bg-gradient-to-r from-transparent via-purple-500/40 to-transparent blur-sm" />
+      </section>
 
       {/* Event Categories */}
       <section className="container py-12">
