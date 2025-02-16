@@ -5,7 +5,6 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    domains: ['your-image-domain.com'], // Add your image domains here
     unoptimized: true,
   },
 };
