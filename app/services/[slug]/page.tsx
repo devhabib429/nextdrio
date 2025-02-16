@@ -1,14 +1,12 @@
+import { redirect } from 'next/navigation';
 import { Service } from "@/types";
 import { sampleServices } from "@/lib/data";
 import ServiceContent from "@/components/service-content";
 
-export async function generateStaticParams() {
-  return sampleServices.map((service) => ({
-    slug: service.slug,
-  }));
-}
+// Define valid service slugs
+const validSlugs = ['devops', 'erpnext'];
 
-type PageProps = {
+interface PageProps {
   params: Promise<{ slug: string }>;
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
@@ -21,6 +19,10 @@ const getIconName = (icon: any) => {
 export default async function ServicePage({ params }: PageProps) {
   const resolvedParams = await params;
   const service = sampleServices.find(s => s.slug === resolvedParams.slug);
+
+  if (!validSlugs.includes(resolvedParams.slug)) {
+    redirect('/services');
+  }
 
   if (!service) {
     return (
@@ -45,4 +47,10 @@ export default async function ServicePage({ params }: PageProps) {
       <ServiceContent serviceData={serializedService} />
     </main>
   );
+}
+
+export async function generateStaticParams() {
+  return validSlugs.map((slug) => ({
+    slug,
+  }));
 }
