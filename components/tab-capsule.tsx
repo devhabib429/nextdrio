@@ -67,12 +67,13 @@ export default function TabCapsule({
   };
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full max-w-full px-4">
       {/* Left Arrow */}
       {showLeftArrow && (
         <button
           onClick={() => scroll('left')}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-1 rounded-full bg-background/80 backdrop-blur-sm border shadow-sm"
+          className="absolute left-2 top-1/2 -translate-y-1/2 z-20 p-1 rounded-full bg-background/80 backdrop-blur-sm border shadow-sm"
+          aria-label="Scroll left"
         >
           <ChevronLeft className="w-5 h-5 text-foreground" />
         </button>
@@ -82,7 +83,8 @@ export default function TabCapsule({
       {showRightArrow && (
         <button
           onClick={() => scroll('right')}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-1 rounded-full bg-background/80 backdrop-blur-sm border shadow-sm"
+          className="absolute right-2 top-1/2 -translate-y-1/2 z-20 p-1 rounded-full bg-background/80 backdrop-blur-sm border shadow-sm"
+          aria-label="Scroll right"
         >
           <ChevronRight className="w-5 h-5 text-foreground" />
         </button>
@@ -91,19 +93,19 @@ export default function TabCapsule({
       {/* Tabs Container */}
       <motion.div 
         ref={ref}
-        className="relative mx-4"
+        className="relative mx-auto max-w-full"
       >
         <div
           ref={scrollContainerRef}
-          className="overflow-x-auto scrollbar-hide"
+          className="overflow-x-auto scrollbar-hide mask-edges"
         >
-          <div className="bg-background/50 backdrop-blur-sm border rounded-full p-1.5 flex gap-2 whitespace-nowrap">
+          <div className="bg-background/50 backdrop-blur-sm border rounded-full p-1.5 inline-flex gap-2 whitespace-nowrap min-w-full sm:min-w-0">
             {items.map((item) => (
               <motion.button
                 key={item}
                 onClick={() => onSelect(item)}
                 className={`
-                  relative px-4 sm:px-6 py-2 rounded-full text-sm font-medium
+                  relative flex-shrink-0 px-3 sm:px-6 py-2 rounded-full text-sm font-medium
                   transition-all duration-300 
                   ${activeItem === item 
                     ? 'text-primary-foreground' 
@@ -121,7 +123,7 @@ export default function TabCapsule({
                     transition={{ type: "spring", duration: 0.5 }}
                   />
                 )}
-                <span className="relative z-10">{item}</span>
+                <span className="relative z-10 whitespace-nowrap">{item}</span>
               </motion.button>
             ))}
           </div>
