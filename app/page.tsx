@@ -34,7 +34,10 @@ import {
   Headphones,
   ChevronDown,
   Quote,
-  Star
+  Star,
+  CheckCircle2,
+  ShoppingBag,
+  Rocket
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -45,13 +48,13 @@ export default function HomePage() {
   const [showContactDialog, setShowContactDialog] = useState(false);
 
   return (
-    <main className="relative w-full min-h-screen overflow-x-hidden">
+    <main className="relative w-full min-h-screen overflow-x-hidden bg-background">
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center py-16 sm:py-20">
         {/* Animated Background */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-grid-white/10 z-0" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background z-0" />
+          <div className="absolute inset-0 bg-grid-white/10 dark:bg-grid-white/5 z-0" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background dark:from-background dark:via-primary/10 dark:to-background z-0" />
 
           {/* Animated Circles */}
           <div className="hidden sm:block">
@@ -62,7 +65,7 @@ export default function HomePage() {
                 opacity: [0.3, 0.5, 0.3]
               }}
               transition={{ duration: 15, repeat: Infinity }}
-              className="absolute -top-24 -left-24 w-96 h-96 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-full blur-3xl"
+              className="absolute -top-24 -left-24 w-96 h-96 bg-gradient-to-r from-primary/30 to-secondary/30 dark:from-primary/20 dark:to-secondary/20 rounded-full blur-3xl"
             />
             <motion.div
               animate={{
@@ -71,7 +74,7 @@ export default function HomePage() {
                 opacity: [0.5, 0.3, 0.5]
               }}
               transition={{ duration: 15, repeat: Infinity, delay: 1 }}
-              className="absolute -bottom-24 -right-24 w-96 h-96 bg-gradient-to-r from-secondary/30 to-primary/30 rounded-full blur-3xl"
+              className="absolute -bottom-24 -right-24 w-96 h-96 bg-gradient-to-r from-secondary/30 to-primary/30 dark:from-secondary/20 dark:to-primary/20 rounded-full blur-3xl"
             />
           </div>
         </div>
@@ -122,11 +125,79 @@ export default function HomePage() {
             {successMetrics.map((metric, index) => (
               <div
                 key={metric.label}
-                className="text-center p-6 rounded-2xl bg-white/50 backdrop-blur-sm border"
+                className="text-center p-6 rounded-2xl bg-card dark:bg-card/50 backdrop-blur-sm border shadow-sm"
               >
                 <metric.icon className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-4 text-primary" />
                 <h3 className="text-base sm:text-lg font-semibold mb-2">{metric.label}</h3>
                 <p className="text-2xl sm:text-3xl font-bold text-primary">{metric.value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Services Section */}
+      <section className="py-12 sm:py-24 px-4">
+        <div className="container">
+          <SectionHeader
+            title="Our Services"
+            subtitle="Comprehensive technology solutions for modern businesses"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {ourServices.map((service, index) => (
+              <div
+                key={service.title}
+                className="group relative overflow-hidden rounded-2xl border bg-card dark:bg-card/50 backdrop-blur-sm p-6 hover:shadow-xl transition-all duration-500"
+              >
+                <div className="relative z-10">
+                  <div className="mb-6 p-4 rounded-xl bg-primary/5 w-fit">
+                    <service.icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
+                  <p className="text-muted-foreground mb-6">{service.description}</p>
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="text-sm text-muted-foreground flex items-center">
+                        <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries We Serve Section */}
+      <section className="py-12 sm:py-24 px-4 bg-muted dark:bg-muted/50">
+        <div className="container">
+          <SectionHeader
+            title="Industries We Serve"
+            subtitle="Tailored solutions for diverse industry verticals"
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+            {industries.map((industry, index) => (
+              <div
+                key={industry.title}
+                className="group relative overflow-hidden rounded-2xl border bg-card dark:bg-card/50 backdrop-blur-sm p-6 hover:shadow-xl transition-all duration-500"
+              >
+                <div className="relative z-10">
+                  <div className="mb-6 p-4 rounded-xl bg-primary/5 w-fit">
+                    <industry.icon className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-4">{industry.title}</h3>
+                  <p className="text-muted-foreground mb-6">{industry.description}</p>
+                  <ul className="space-y-2">
+                    {industry.features.map((feature) => (
+                      <li key={feature} className="text-sm text-muted-foreground flex items-center">
+                        <CheckCircle2 className="w-4 h-4 mr-2 text-primary" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>
@@ -140,12 +211,11 @@ export default function HomePage() {
             title="Why Choose Us"
             subtitle="Delivering excellence through innovation and expertise"
           />
-
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {whyChooseUs.map((reason) => (
               <div
                 key={reason.title}
-                className="group relative overflow-hidden rounded-2xl border bg-background/50 backdrop-blur-sm p-6 sm:p-8 hover:shadow-xl transition-all duration-500"
+                className="group relative overflow-hidden rounded-2xl border bg-card dark:bg-card/50 backdrop-blur-sm p-6 sm:p-8 hover:shadow-xl transition-all duration-500"
               >
                 <div className="relative z-10">
                   <div className="mb-6 p-4 rounded-xl bg-primary/5 w-fit">
@@ -165,7 +235,7 @@ export default function HomePage() {
       </section>
 
       {/* Technologies Section */}
-      <section className="py-12 sm:py-24 px-4 bg-muted/50">
+      <section className="py-12 sm:py-24 px-4 bg-muted dark:bg-muted/50">
         <div className="container">
           <SectionHeader
             title="Technologies We Use"
@@ -175,7 +245,7 @@ export default function HomePage() {
             {technologies.map((tech) => (
               <div
                 key={tech.name}
-                className="p-6 rounded-lg border bg-background/50 backdrop-blur-sm text-center"
+                className="p-6 rounded-lg border bg-card dark:bg-card/50 backdrop-blur-sm text-center"
               >
                 <tech.icon className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-4 text-primary" />
                 <h3 className="text-lg font-semibold mb-2">{tech.name}</h3>
@@ -197,7 +267,7 @@ export default function HomePage() {
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.name}
-                className="p-6 rounded-lg border bg-background"
+                className="p-6 rounded-lg border bg-card dark:bg-card/50 backdrop-blur-sm"
               >
                 <Quote className="w-8 h-8 text-primary mb-4" />
                 <p className="text-muted-foreground mb-4">{testimonial.content}</p>
@@ -495,6 +565,72 @@ const testimonials = [
     role: "COO at RetailTech",
     avatar: "/mike-johnson.jpg",
     content: "The retail solutions they provided have revolutionized our business. Their team's attention to detail and customer service are top-notch."
+  }
+];
+
+const industries = [
+  {
+    title: "Healthcare",
+    description: "Digital solutions for modern healthcare providers",
+    icon: Heart,
+    features: ["Patient Management", "Telemedicine", "Health Analytics"]
+  },
+  {
+    title: "Manufacturing",
+    description: "Industry 4.0 solutions for smart manufacturing",
+    icon: Building2,
+    features: ["IoT Integration", "Process Automation", "Quality Control"]
+  },
+  {
+    title: "Finance",
+    description: "Fintech solutions for the modern financial sector",
+    icon: LineChart,
+    features: ["Payment Processing", "Risk Management", "Fraud Detection"]
+  },
+  {
+    title: "Retail",
+    description: "Digital transformation for retail businesses",
+    icon: ShoppingBag,
+    features: ["Inventory Management", "POS Systems", "E-commerce"]
+  }
+];
+
+const ourServices = [
+  {
+    title: "Full Stack Development",
+    description: "End-to-end web and mobile solutions with modern technologies",
+    icon: Code2,
+    features: ["Web Applications", "Mobile Apps", "API Development"]
+  },
+  {
+    title: "DevOps Solutions",
+    description: "Streamline your development and deployment processes",
+    icon: Cloud,
+    features: ["CI/CD Pipeline", "Cloud Infrastructure", "Containerization"]
+  },
+  {
+    title: "GenAI Development",
+    description: "Custom AI solutions for business automation",
+    icon: Brain,
+    features: ["LLM Integration", "Custom AI Models", "Process Automation"]
+  },
+  {
+    title: "ERPNext Solutions",
+    description: "Comprehensive business management systems",
+    icon: Database,
+    features: ["Implementation", "Customization", "Training"]
+  },
+  {
+    title: "IT Consultancy",
+    description: "Strategic technology consulting for business growth",
+    icon: Lightbulb,
+    features: ["Digital Strategy", "Tech Architecture", "Process Optimization"]
+  },
+  {
+    title: "Startup Guidance",
+    description: "Technical expertise for emerging businesses",
+    icon: Rocket,
+    features: ["MVP Development", "Tech Stack Selection", "Scaling Strategy"]
   }
 ];
 
