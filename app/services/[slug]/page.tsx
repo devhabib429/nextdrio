@@ -1,26 +1,42 @@
 import { redirect } from 'next/navigation';
+import { Metadata } from 'next';
 import { Service } from "@/types";
 import { sampleServices } from "@/lib/data";
 import ServiceContent from "@/components/service-content";
 
-// Define valid service slugs
-const validSlugs = ['devops', 'erpnext'];
-
-interface PageProps {
-  params: Promise<{ slug: string }>;
-  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
-}
+// Define valid services and their metadata
+const services = {
+  devops: {
+    title: "DevOps Solutions",
+    description: "Streamline your development and deployment processes with modern DevOps practices"
+  },
+  erpnext: {
+    title: "ERPNext Solutions",
+    description: "Comprehensive business management and automation solutions"
+  }
+};
 
 // Helper function to get icon name
 const getIconName = (icon: any) => {
   return (icon?.render?.displayName || icon?.displayName || 'Trophy') as string;
 };
 
-export default async function ServicePage({ params }: PageProps) {
-  const resolvedParams = await params;
-  const service = sampleServices.find(s => s.slug === resolvedParams.slug);
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const service = services[params.slug as keyof typeof services];
+  return service ? {
+    title: `${service.title} - NextDrio`,
+    description: service.description
+  } : {
+    title: 'Services - NextDrio',
+    description: 'Our services'
+  };
+}
 
-  if (!validSlugs.includes(resolvedParams.slug)) {
+export default async function ServicePage({ params }: { params: { slug: string } }) {
+  const validSlugs = Object.keys(services);
+  const service = sampleServices.find(s => s.slug === params.slug);
+
+  if (!validSlugs.includes(params.slug)) {
     redirect('/services');
   }
 
@@ -49,8 +65,8 @@ export default async function ServicePage({ params }: PageProps) {
   );
 }
 
-export async function generateStaticParams() {
-  return validSlugs.map((slug) => ({
+export function generateStaticParams() {
+  return Object.keys(services).map((slug) => ({
     slug,
   }));
 }
