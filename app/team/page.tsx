@@ -20,11 +20,11 @@ import Link from "next/link";
 
 const teamMembers = [
   {
-    name: "John Smith",
+    name: "Habibur Rahman",
     role: "CEO & Founder",
     image: "/team/john-smith.jpg",
-    bio: "15+ years of experience in software development and business leadership",
-    expertise: ["Business Strategy", "Technology Vision", "Team Leadership"],
+    bio: "5+ years of experience in software development and business leadership",
+    expertise: ["Business Strategy", "Technology Vision", "Team Leadership", "Tech Lead"],
     social: {
       linkedin: "https://linkedin.com/in/johnsmith",
       twitter: "https://twitter.com/johnsmith",
@@ -32,11 +32,11 @@ const teamMembers = [
     }
   },
   {
-    name: "Sarah Johnson",
+    name: "Akaash Panwar",
     role: "Co-Founder & CTO",
     image: "/team/sarah-johnson.jpg",
-    bio: "Former Google engineer with deep expertise in cloud architecture and AI",
-    expertise: ["Cloud Architecture", "AI/ML", "System Design"],
+    bio: "Deep expertise in Aplication and Tech Leadership",
+    expertise: ["Mobile Development", "Data Administration", "System Design"],
     social: {
       linkedin: "https://linkedin.com/in/sarahjohnson",
       twitter: "https://twitter.com/sarahjohnson",
@@ -44,49 +44,49 @@ const teamMembers = [
     }
   },
   {
-    name: "Michael Chen",
-    role: "Head of DevOps",
+    name: "Vaishnavee Lilhare",
+    role: "UIUX and Product Designer",
     image: "/team/michael-chen.jpg",
-    bio: "DevOps expert with a track record of implementing efficient CI/CD pipelines",
-    expertise: ["Infrastructure", "Automation", "Cloud Security"],
+    bio: "Product Designer expert with a track record of implementing efficient in UIUX and Product Design",
+    expertise: ["Product Designer", "UIUX", "Product  Management"],
     social: {
       linkedin: "https://linkedin.com/in/michaelchen",
       github: "https://github.com/michaelchen"
     }
   },
-  {
-    name: "Emily Rodriguez",
-    role: "Marketing Director",
-    image: "/team/emily-rodriguez.jpg",
-    bio: "Digital marketing strategist with expertise in B2B tech marketing",
-    expertise: ["Digital Strategy", "Content Marketing", "Brand Development"],
-    social: {
-      linkedin: "https://linkedin.com/in/emilyrodriguez",
-      twitter: "https://twitter.com/emilyrodriguez"
-    }
-  },
-  {
-    name: "David Kim",
-    role: "Lead ERPNext Developer",
-    image: "/team/david-kim.jpg",
-    bio: "ERPNext specialist with extensive experience in custom implementations",
-    expertise: ["ERPNext", "Business Analysis", "Process Automation"],
-    social: {
-      linkedin: "https://linkedin.com/in/davidkim",
-      github: "https://github.com/davidkim"
-    }
-  },
-  {
-    name: "Lisa Wang",
-    role: "UI/UX Design Lead",
-    image: "/team/lisa-wang.jpg",
-    bio: "Award-winning designer focused on creating exceptional user experiences",
-    expertise: ["UI Design", "User Research", "Design Systems"],
-    social: {
-      linkedin: "https://linkedin.com/in/lisawang",
-      twitter: "https://twitter.com/lisawang"
-    }
-  }
+  // {
+  //   name: "Emily Rodriguez",
+  //   role: "Marketing Director",
+  //   image: "/team/emily-rodriguez.jpg",
+  //   bio: "Digital marketing strategist with expertise in B2B tech marketing",
+  //   expertise: ["Digital Strategy", "Content Marketing", "Brand Development"],
+  //   social: {
+  //     linkedin: "https://linkedin.com/in/emilyrodriguez",
+  //     twitter: "https://twitter.com/emilyrodriguez"
+  //   }
+  // },
+  // {
+  //   name: "David Kim",
+  //   role: "Lead ERPNext Developer",
+  //   image: "/team/david-kim.jpg",
+  //   bio: "ERPNext specialist with extensive experience in custom implementations",
+  //   expertise: ["ERPNext", "Business Analysis", "Process Automation"],
+  //   social: {
+  //     linkedin: "https://linkedin.com/in/davidkim",
+  //     github: "https://github.com/davidkim"
+  //   }
+  // },
+  // {
+  //   name: "Lisa Wang",
+  //   role: "UI/UX Design Lead",
+  //   image: "/team/lisa-wang.jpg",
+  //   bio: "Award-winning designer focused on creating exceptional user experiences",
+  //   expertise: ["UI Design", "User Research", "Design Systems"],
+  //   social: {
+  //     linkedin: "https://linkedin.com/in/lisawang",
+  //     twitter: "https://twitter.com/lisawang"
+  //   }
+  // }
 ];
 
 const values = [
@@ -222,8 +222,8 @@ export default function TeamPage() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
               >
                 {[
-                  { icon: Users, label: 'Team Members', value: '50+' },
-                  { icon: Award, label: 'Years Experience', value: '15+' },
+                  { icon: Users, label: 'Team Members', value: '15+' },
+                  { icon: Award, label: 'Years Experience', value: '3+' },
                   { icon: Globe, label: 'Countries', value: '10+' },
                   { icon: Heart, label: 'Client Satisfaction', value: '98%' }
                 ].map((stat, index) => (

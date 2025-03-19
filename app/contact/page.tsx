@@ -71,7 +71,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <p className="font-medium">Phone</p>
-                  <p className="text-muted-foreground">+1 (555) 000-0000</p>
+                  <p className="text-muted-foreground">+91 8874131212</p>
                 </div>
               </div>
 
@@ -92,7 +92,7 @@ export default function Contact() {
                 <div>
                   <p className="font-medium">Office</p>
                   <p className="text-muted-foreground">
-                    123 Innovation Street, Tech Valley, CA 94025
+                    Remote
                   </p>
                 </div>
               </div>

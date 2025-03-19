@@ -30,20 +30,20 @@ import Link from "next/link";
 const announcements = [
   {
     id: 1,
-    title: "Next-Gen Cloud Platform Launch",
-    date: "2024-03-15",
+    title: "Mock API Generator",
+    date: "202-02-15",
     category: "Product Launch",
-    description: "We're excited to announce our next-generation cloud platform with enhanced security features and improved performance.",
+    description: "We're excited to announce our Mock API Generator platform with enhanced features and improved performance.",
     priority: "high",
     link: "/blog/cloud-platform-launch",
     image: "https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?w=800"
   },
   {
     id: 2,
-    title: "Strategic Partnership with TechGiant",
-    date: "2024-03-10",
+    title: "Partnership with Wyreflow",
+    date: "2025-02-10",
     category: "Partnership",
-    description: "We've partnered with TechGiant to bring enterprise-grade solutions to small businesses.",
+    description: "We've partnered with Wyreflow to bring enterprise-grade solutions to small businesses.",
     priority: "medium",
     link: "/blog/techgiant-partnership",
     image: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800"

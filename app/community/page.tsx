@@ -228,7 +228,7 @@ export default function CommunityPage() {
                   { icon: Users, label: 'Active Members', value: '10K+' },
                   { icon: Globe, label: 'Countries', value: '50+' },
                   { icon: MessageCircle, label: 'Discussions', value: '25K+' },
-                  { icon: Heart, label: 'Projects', value: '1000+' }
+                  { icon: Heart, label: 'Projects', value: '100+' }
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}

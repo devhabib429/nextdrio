@@ -180,10 +180,10 @@ export default function Projects() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
               >
                 {[
-                  { icon: Briefcase, label: 'Projects Completed', value: '200+' },
-                  { icon: Users, label: 'Happy Clients', value: '150+' },
-                  { icon: Clock, label: 'Years Experience', value: '10+' },
-                  { icon: Trophy, label: 'Awards Won', value: '25+' }
+                  { icon: Briefcase, label: 'Projects Completed', value: '20+' },
+                  { icon: Users, label: 'Happy Clients', value: '20+' },
+                  { icon: Clock, label: 'Years Experience', value: '3+' },
+                  { icon: Trophy, label: 'Awards Won', value: '2+' }
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -333,7 +333,7 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
+                  {/* <div className="flex gap-4">
                     {project.github && (
                       <Button variant="outline" size="sm" asChild>
                         <Link href={project.github}>
@@ -350,7 +350,7 @@ export default function Projects() {
                         </Link>
                       </Button>
                     )}
-                  </div>
+                  </div> */}
                 </CardContent>
               </Card>
             </motion.div>
@@ -390,8 +390,8 @@ export default function Projects() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            { metric: "100+", label: "Projects Delivered", icon: CheckCircle2 },
-            { metric: "95%", label: "Client Satisfaction", icon: Heart },
+            { metric: "20+", label: "Projects Delivered", icon: CheckCircle2 },
+            { metric: "98%", label: "Client Satisfaction", icon: Heart },
             { metric: "40%", label: "Average Cost Reduction", icon: DollarSign },
             { metric: "60%", label: "Efficiency Increase", icon: TrendingUp }
           ].map((item, index) => (

@@ -244,9 +244,9 @@ export default function EventsPage() {
               >
                 {[
                   { icon: Calendar, label: 'Annual Events', value: '20+' },
-                  { icon: Users, label: 'Attendees', value: '5000+' },
-                  { icon: Globe, label: 'Countries', value: '25+' },
-                  { icon: Mic2, label: 'Speakers', value: '100+' }
+                  { icon: Users, label: 'Attendees', value: '2000+' },
+                  { icon: Globe, label: 'Countries', value: '10+' },
+                  { icon: Mic2, label: 'Speakers', value: '10+' }
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}

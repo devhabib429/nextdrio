@@ -336,9 +336,9 @@ const features = [
 ];
 
 const stats = [
-  { value: "500+", label: "Projects Delivered" },
+  { value: "20+", label: "Projects Delivered" },
   { value: "98%", label: "Client Satisfaction" },
-  { value: "50+", label: "Expert Team Members" },
+  { value: "15+", label: "Expert Team Members" },
   { value: "24/7", label: "Support Available" }
 ];
 
@@ -508,12 +508,12 @@ const successMetrics = [
     icon: Sparkles
   },
   {
-    value: "500+",
+    value: "20+",
     label: "Projects Delivered",
     icon: TrendingUp
   },
   {
-    value: "50+",
+    value: "15+",
     label: "Expert Team Members",
     icon: Users2
   },

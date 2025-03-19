@@ -110,11 +110,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4" />
-                <span>+1 (555) 000-0000</span>
+                <span>+91 8874131212</span>
               </li>
               <li className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                <span>123 Innovation Street, Tech Valley, CA 94025</span>
+                <span>Remote</span>
               </li>
             </ul>
           </div>

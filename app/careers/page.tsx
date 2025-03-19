@@ -6,10 +6,10 @@ import { useState } from "react";
 import PageHero from "@/components/page-hero";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { 
-  Briefcase, 
-  MapPin, 
-  Clock, 
+import {
+  Briefcase,
+  MapPin,
+  Clock,
   ArrowRight,
   Building2,
   GraduationCap,
@@ -160,8 +160,8 @@ export default function CareersPage() {
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               scale: [1, 1.2, 1],
               rotate: [0, 45, 0],
               opacity: [0.3, 0.2, 0.3]
@@ -252,9 +252,9 @@ export default function CareersPage() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
               >
                 {[
-                  { icon: Rocket, label: 'Open Positions', value: '20+' },
-                  { icon: Globe, label: 'Office Locations', value: '5+' },
-                  { icon: Users, label: 'Team Members', value: '100+' },
+                  { icon: Rocket, label: 'Open Positions', value: '2+' },
+                  { icon: Globe, label: 'Office Locations', value: '1+' },
+                  { icon: Users, label: 'Team Members', value: '15+' },
                   { icon: GraduationCap, label: 'Learning Budget', value: '$2K' }
                 ].map((stat, index) => (
                   <motion.div
@@ -361,11 +361,11 @@ export default function CareersPage() {
                       </Badge>
                     </div>
                   </div>
-                  
+
                   <p className="text-muted-foreground">
                     {position.description}
                   </p>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <h4 className="font-semibold mb-2">Requirements:</h4>
@@ -375,7 +375,7 @@ export default function CareersPage() {
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div>
                       <h4 className="font-semibold mb-2">Benefits:</h4>
                       <ul className="list-disc list-inside text-muted-foreground">
@@ -386,11 +386,13 @@ export default function CareersPage() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex lg:flex-col justify-start gap-4">
-                  <Button size="lg">
-                    Apply Now <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
+                  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdRlwlC_pSlb_kiR_h6i7S9U6WYrHg-krB3LXopolXJyelsNQ/viewform?usp=header">
+                    <Button size="lg">
+                      Apply Now <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
                   <Button variant="outline" size="lg">
                     Learn More
                   </Button>

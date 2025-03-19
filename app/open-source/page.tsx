@@ -206,10 +206,10 @@ export default function OpenSource() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
               >
                 {[
-                  { icon: GitFork, label: 'Repositories', value: '50+' },
-                  { icon: Star, label: 'GitHub Stars', value: '1000+' },
-                  { icon: Users, label: 'Contributors', value: '100+' },
-                  { icon: Download, label: 'Downloads', value: '1M+' }
+                  { icon: GitFork, label: 'Repositories', value: '3+' },
+                  { icon: Star, label: 'GitHub Stars', value: '100+' },
+                  { icon: Users, label: 'Contributors', value: '10+' },
+                  { icon: Download, label: 'Downloads', value: '1K+' }
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -330,10 +330,10 @@ export default function OpenSource() {
       <section className="container py-24">
         <div className="grid md:grid-cols-4 gap-8">
           {[
-            { icon: Users, value: "5,000+", label: "Contributors" },
-            { icon: Star, value: "15K+", label: "GitHub Stars" },
-            { icon: GitPullRequest, value: "2,500+", label: "Pull Requests" },
-            { icon: Heart, value: "100+", label: "Active Projects" }
+            { icon: Users, value: "100+", label: "Contributors" },
+            { icon: Star, value: "1K+", label: "GitHub Stars" },
+            { icon: GitPullRequest, value: "250+", label: "Pull Requests" },
+            { icon: Heart, value: "3+", label: "Active Projects" }
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

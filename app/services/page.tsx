@@ -122,10 +122,10 @@ const services = [
 ];
 
 const achievements = [
-  { value: "500+", label: "Projects Delivered", icon: FolderOpen },
-  { value: "99.9%", label: "Client Satisfaction", icon: Heart },
+  { value: "20+", label: "Projects Delivered", icon: FolderOpen },
+  { value: "98%", label: "Client Satisfaction", icon: Heart },
   { value: "24/7", label: "Support Coverage", icon: Clock },
-  { value: "50+", label: "Expert Team Members", icon: Users }
+  { value: "15+", label: "Expert Team Members", icon: Users }
 ];
 
 export default function Services() {
@@ -217,10 +217,10 @@ export default function Services() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
               >
                 {[
-                  { icon: Cloud, label: 'Cloud Native', value: '100+' },
-                  { icon: Users, label: 'Happy Clients', value: '500+' },
-                  { icon: Code2, label: 'Projects', value: '1000+' },
-                  { icon: Award, label: 'Awards', value: '50+' }
+                  { icon: Cloud, label: 'Cloud Native', value: '10+' },
+                  { icon: Users, label: 'Happy Clients', value: '20+' },
+                  { icon: Code2, label: 'Projects', value: '20+' },
+                  { icon: Award, label: 'Awards', value: '2+' }
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
