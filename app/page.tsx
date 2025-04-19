@@ -98,8 +98,10 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
-              <Button size="lg" className="w-full sm:w-auto" onClick={() => setShowContactDialog(true)}>
-                Get Started <ArrowRight className="ml-2 h-4 w-4" />
+              <Button size="lg" className="w-full sm:w-auto" asChild>
+                <Link href="/contact">
+                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
               <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
                 <Link href="/projects">
@@ -260,15 +262,52 @@ export default function HomePage() {
             subtitle="Cutting-edge solutions for modern challenges"
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {technologies.map((tech) => (
-              <div
+            {technologies.map((tech, index) => (
+              <motion.div
                 key={tech.name}
-                className="p-6 rounded-lg border bg-card dark:bg-card/50 backdrop-blur-sm text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative overflow-hidden rounded-2xl border bg-card dark:bg-card/50 backdrop-blur-sm p-6 hover:shadow-xl transition-all duration-500"
               >
-                <tech.icon className="w-8 h-8 sm:w-12 sm:h-12 mx-auto mb-4 text-primary" />
-                <h3 className="text-lg font-semibold mb-2">{tech.name}</h3>
-                <p className="text-sm text-muted-foreground">{tech.description}</p>
-              </div>
+                {/* Animated Background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <motion.div 
+                  className="absolute inset-0 bg-grid-white/10 dark:bg-grid-white/5"
+                  animate={{
+                    backgroundPosition: ['0% 0%', '100% 100%'],
+                  }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                />
+                
+                <div className="relative z-10">
+                  <div className="mb-6 p-4 rounded-xl bg-primary/5 w-fit group-hover:bg-primary/10 transition-colors duration-500">
+                    <motion.div
+                      animate={{
+                        rotate: [0, 5, -5, 0],
+                      }}
+                      transition={{
+                        duration: 4,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                      }}
+                    >
+                      <tech.icon className="w-8 h-8 sm:w-12 sm:h-12 text-primary group-hover:scale-110 transition-transform duration-500" />
+                    </motion.div>
+                  </div>
+                  <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors duration-500">
+                    {tech.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-500">
+                    {tech.description}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -554,14 +593,14 @@ const technologies = [
     icon: Cloud
   },
   {
-    name: "Blockchain",
-    description: "Secure distributed systems",
-    icon: Shield
+    name: "Personalized Intelligence",
+    description: "Tailored AI solutions for individual needs",
+    icon: Brain
   },
   {
-    name: "IoT",
-    description: "Connected device solutions",
-    icon: Cpu
+    name: "GenAI",
+    description: "Next-generation AI capabilities",
+    icon: Sparkles
   }
 ];
 

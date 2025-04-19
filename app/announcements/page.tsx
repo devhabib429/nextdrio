@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import PageHero from "@/components/page-hero";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -98,6 +98,12 @@ export default function AnnouncementsPage() {
     triggerOnce: true,
     threshold: 0.1,
   });
+  
+  const subscribeFormRef = useRef<HTMLDivElement>(null);
+  
+  const scrollToSubscribeForm = () => {
+    subscribeFormRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <div className="min-h-screen" ref={ref}>
@@ -176,7 +182,11 @@ export default function AnnouncementsPage() {
                 transition={{ delay: 0.5 }}
                 className="flex flex-wrap justify-center gap-4 mt-8"
               >
-                <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600">
+                <Button 
+                  size="lg" 
+                  className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600"
+                  onClick={scrollToSubscribeForm}
+                >
                   <Bell className="mr-2 h-4 w-4" />
                   <span className="relative">Subscribe Now</span>
                   <ArrowRight className="relative ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -328,7 +338,10 @@ export default function AnnouncementsPage() {
       </section>
 
       <section className="container py-16">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 p-8 md:p-12">
+        <div 
+          ref={subscribeFormRef}
+          className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-primary/10 via-secondary/10 to-primary/10 p-8 md:p-12"
+        >
           <div className="absolute inset-0 bg-grid-white/10" />
           <div className="relative z-10 max-w-2xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-4">Stay in the Loop</h2>
