@@ -35,12 +35,11 @@ export async function getServices(): Promise<Service[]> {
 
 export async function createService(service: Omit<Service, 'id'>): Promise<Service> {
   try {
-    if (!service.name || !service.description) {
-      throw new ApiError('Name and description are required');
+    if (!service.title || !service.description) {
+      throw new ApiError('Title and description are required');
     }
-    // Added check for required 'icon' property
-    if (!service.icon) {
-      throw new ApiError('Icon is required', 400);
+    if (!service.gradient || !service.metrics || !service.features || !service.benefits) {
+      throw new ApiError('Missing required service properties');
     }
 
     const newService: Service = {
@@ -89,7 +88,10 @@ export async function createProject(project: Omit<Project, 'id'>): Promise<Proje
 // Events
 export async function getEvents(): Promise<Event[]> {
   try {
-    return sampleEvents;
+    return sampleEvents.map(event => ({
+      ...event,
+      id: Number(event.id)
+    }));
   } catch (error) {
     throw new ApiError('Failed to fetch events', 500);
   }
@@ -102,7 +104,7 @@ export async function createEvent(event: Omit<Event, 'id'>): Promise<Event> {
     }
 
     const newEvent: Event = {
-      id: generateId(),
+      id: Date.now(), // Use timestamp as numeric ID
       ...event
     };
     sampleEvents.push(newEvent);
@@ -114,26 +116,26 @@ export async function createEvent(event: Omit<Event, 'id'>): Promise<Event> {
 }
 
 // Generic update and delete functions
-function updateItem<T extends { id: string }>(
+function updateItem<T extends { id: string | number }>(
   items: T[],
   id: string,
   updates: Partial<T>,
   itemType: string
 ): T {
-  const index = items.findIndex(item => item.id === id);
+  const index = items.findIndex(item => String(item.id) === id);
   if (index === -1) throw new ApiError(`${itemType} not found`, 404);
 
-  const updatedItem = { ...items[index], ...updates };
+  const updatedItem = { ...items[index], ...updates, id: items[index].id };
   items[index] = updatedItem;
   return updatedItem;
 }
 
-function deleteItem<T extends { id: string }>(
+function deleteItem<T extends { id: string | number }>(
   items: T[],
   id: string,
   itemType: string
 ): void {
-  const index = items.findIndex(item => item.id === id);
+  const index = items.findIndex(item => String(item.id) === id);
   if (index === -1) throw new ApiError(`${itemType} not found`, 404);
   items.splice(index, 1);
 }

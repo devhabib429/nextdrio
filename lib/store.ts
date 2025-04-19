@@ -162,7 +162,7 @@ export const useAdminStore = create<AdminStore>((set) => ({
       set({ loading: true, error: null });
       const updatedEvent = await api.updateEvent(id, event);
       set((state) => ({
-        events: state.events.map((e) => (e.id === id ? updatedEvent : e)),
+        events: state.events.map((e) => (e.id === Number(id) ? updatedEvent : e)),
         loading: false,
       }));
     } catch (error) {
@@ -175,7 +175,7 @@ export const useAdminStore = create<AdminStore>((set) => ({
       set({ loading: true, error: null });
       await api.deleteEvent(id);
       set((state) => ({
-        events: state.events.filter((e) => e.id !== id),
+        events: state.events.filter((e) => e.id !== Number(id)),
         loading: false,
       }));
     } catch (error) {

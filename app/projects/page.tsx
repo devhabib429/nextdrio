@@ -7,13 +7,35 @@ import ProjectProcess from "@/components/project-process";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Github, Globe, ArrowRight, Star, GitFork, Users, Trophy, Clock, Target, CheckCircle2, Heart, DollarSign, TrendingUp, Rocket, Palette, Server, Database, Wrench, TestTube2, Cloud, Code2 } from "lucide-react";
+import { Github, Globe, ArrowRight, Star, GitFork, Users, Trophy, Clock, Target, CheckCircle2, Heart, DollarSign, TrendingUp, Rocket, Palette, Server, Database, Wrench, TestTube2, Cloud, Code2, Briefcase } from "lucide-react";
 import Link from "next/link";
 import { useAdminStore } from "@/lib/store";
 import { LoadingSpinner } from "@/components/ui/loading-spinner";
 import TabCapsule from "@/components/tab-capsule";
 import ContactDialog from "@/components/contact-dialog";
 import { useInView } from "react-intersection-observer";
+
+interface Project {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  url: string;
+  category: string;
+  tags: string[];
+  metrics: {
+    stars: number;
+    forks: number;
+    contributors: number;
+  };
+  impact?: string[];
+  timeline: string;
+  status: string;
+  testimonials: string[];
+  technologies: string[];
+  link: string;
+  github: string;
+}
 
 const categories = [
   "All",
@@ -32,7 +54,7 @@ export default function Projects() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [showContactDialog, setShowContactDialog] = useState(false);
-  
+
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -63,11 +85,130 @@ export default function Projects() {
 
   return (
     <div className="min-h-screen">
-      <PageHero
-        title="Our Projects"
-        description="Explore our portfolio of innovative solutions and successful implementations"
-        gradient="from-blue-500 to-cyan-500"
-      />
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-background via-background/90 to-background/50">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              rotate: [0, 30, 0],
+              opacity: [0.3, 0.2, 0.3]
+            }}
+            transition={{ duration: 20, repeat: Infinity }}
+            className="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-br from-orange-500/10 via-amber-500/10 to-transparent blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              rotate: [30, 0, 30],
+              opacity: [0.2, 0.3, 0.2]
+            }}
+            transition={{ duration: 20, repeat: Infinity, delay: 10 }}
+            className="absolute -bottom-1/2 right-0 w-full h-full bg-gradient-to-tl from-amber-500/10 via-orange-500/10 to-transparent blur-3xl"
+          />
+        </div>
+
+        <div className="container relative z-10 mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="text-center space-y-8">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-block"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-orange-500/20 to-amber-500/20 blur-xl" />
+                  <div className="relative bg-background/80 backdrop-blur-sm border rounded-2xl px-6 py-2">
+                    <span className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-amber-500">
+                      Our Success Stories
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-6xl md:text-7xl font-bold tracking-tight"
+              >
+                Transforming Ideas
+                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-orange-400 to-amber-400">
+                  Into Reality
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              >
+                Explore our portfolio of successful projects that showcase our expertise
+                in delivering innovative solutions
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap justify-center gap-4 mt-8"
+              >
+                <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600">
+                  <span className="relative">View Case Studies</span>
+                  <ArrowRight className="relative ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="group hover:border-orange-500/50 transition-colors"
+                >
+                  Our Process
+                </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
+              >
+                {[
+                  { icon: Briefcase, label: 'Projects Completed', value: '20+' },
+                  { icon: Users, label: 'Happy Clients', value: '20+' },
+                  { icon: Clock, label: 'Years Experience', value: '3+' },
+                  { icon: Trophy, label: 'Awards Won', value: '2+' }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-500/5 to-amber-500/5 blur-xl group-hover:opacity-75 transition-opacity" />
+                    <div className="relative p-6 text-center">
+                      <stat.icon className="w-8 h-8 text-orange-500 mx-auto mb-3" />
+                      <div className="font-bold text-2xl mb-1">{stat.value}</div>
+                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Decorative elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-orange-500/20 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/4 h-[2px] bg-gradient-to-r from-transparent via-amber-500/40 to-transparent blur-sm" />
+      </section>
 
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
@@ -136,7 +277,7 @@ export default function Projects() {
                 </div>
                 <CardContent className="p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    {project.tags.map((tag) => (
+                    {project.tags?.map((tag) => (
                       <span
                         key={tag}
                         className="px-2 py-1 text-xs rounded-full bg-primary/10 text-primary"
@@ -149,10 +290,10 @@ export default function Projects() {
                   <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
                   <p className="text-muted-foreground mb-4">{project.description}</p>
 
-                  <div className="mb-6">
+                  <div className="mt-4">
                     <h4 className="text-sm font-semibold mb-2">Key Impacts</h4>
                     <ul className="grid grid-cols-2 gap-2">
-                      {project.impact.map((impact) => (
+                      {project.impact && project.impact.map((impact) => (
                         <li key={impact} className="flex items-center text-sm">
                           <ArrowRight className="h-4 w-4 mr-2 text-primary" />
                           {impact}
@@ -164,7 +305,7 @@ export default function Projects() {
                   <div className="mb-6">
                     <h4 className="text-sm font-semibold mb-2">Technologies</h4>
                     <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech) => (
+                      {project.technologies?.map((tech) => (
                         <span
                           key={tech}
                           className="px-2 py-1 text-xs rounded-full bg-secondary text-secondary-foreground"
@@ -179,20 +320,20 @@ export default function Projects() {
                     <div className="flex items-center gap-4">
                       <div className="flex items-center">
                         <Star className="h-4 w-4 mr-1 text-primary" />
-                        <span className="text-sm">{project.metrics.stars}</span>
+                        <span className="text-sm">{project.metrics?.stars}</span>
                       </div>
                       <div className="flex items-center">
                         <GitFork className="h-4 w-4 mr-1 text-primary" />
-                        <span className="text-sm">{project.metrics.forks}</span>
+                        <span className="text-sm">{project.metrics?.forks}</span>
                       </div>
                       <div className="flex items-center">
                         <Users className="h-4 w-4 mr-1 text-primary" />
-                        <span className="text-sm">{project.metrics.contributors}</span>
+                        <span className="text-sm">{project.metrics?.contributors}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex gap-4">
+                  {/* <div className="flex gap-4">
                     {project.github && (
                       <Button variant="outline" size="sm" asChild>
                         <Link href={project.github}>
@@ -209,7 +350,7 @@ export default function Projects() {
                         </Link>
                       </Button>
                     )}
-                  </div>
+                  </div> */}
                 </CardContent>
               </Card>
             </motion.div>
@@ -232,7 +373,7 @@ export default function Projects() {
       <ProjectProcess />
 
       {/* Project Impact Metrics */}
-      <section 
+      <section
         ref={ref}
         className="container py-24 bg-gradient-to-b from-background to-secondary/10 rounded-3xl"
       >
@@ -249,8 +390,8 @@ export default function Projects() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
-            { metric: "100+", label: "Projects Delivered", icon: CheckCircle2 },
-            { metric: "95%", label: "Client Satisfaction", icon: Heart },
+            { metric: "20+", label: "Projects Delivered", icon: CheckCircle2 },
+            { metric: "98%", label: "Client Satisfaction", icon: Heart },
             { metric: "40%", label: "Average Cost Reduction", icon: DollarSign },
             { metric: "60%", label: "Efficiency Increase", icon: TrendingUp }
           ].map((item, index) => (
@@ -433,9 +574,9 @@ export default function Projects() {
             <motion.div
               key={stack.category}
               initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              animate={inView ? { 
-                opacity: 1, 
-                y: 0, 
+              animate={inView ? {
+                opacity: 1,
+                y: 0,
                 scale: 1,
                 transition: {
                   duration: 0.5,
@@ -443,7 +584,7 @@ export default function Projects() {
                   ease: "easeOut"
                 }
               } : {}}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 transition: { duration: 0.2 }
               }}
@@ -477,7 +618,7 @@ export default function Projects() {
                   </motion.div>
                   <h3 className="font-semibold text-lg">{stack.category}</h3>
                 </div>
-                
+
                 <div className="space-y-3">
                   {stack.techs.map((tech, techIndex) => (
                     <motion.div
@@ -496,7 +637,7 @@ export default function Projects() {
                         hover:bg-background/80 transition-colors duration-300"
                     >
                       <motion.span
-                        animate={{ 
+                        animate={{
                           scale: [1, 1.2, 1],
                           rotate: [0, 10, -10, 0]
                         }}
@@ -543,8 +684,8 @@ export default function Projects() {
         </div>
       </motion.div>
 
-      <ContactDialog 
-        open={showContactDialog} 
+      <ContactDialog
+        open={showContactDialog}
         onOpenChange={setShowContactDialog}
       />
     </div>

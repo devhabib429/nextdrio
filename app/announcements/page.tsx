@@ -16,27 +16,34 @@ import {
   Building2,
   Laptop,
   Heart,
-  CheckCircle2 
+  CheckCircle2,
+  Users,
+  Globe,
+  Newspaper,
+  Megaphone,
+  Rss,
+  BookOpen,
+  Share2
 } from "lucide-react";
 import Link from "next/link";
 
 const announcements = [
   {
     id: 1,
-    title: "Next-Gen Cloud Platform Launch",
-    date: "2024-03-15",
+    title: "Mock API Generator",
+    date: "202-02-15",
     category: "Product Launch",
-    description: "We're excited to announce our next-generation cloud platform with enhanced security features and improved performance.",
+    description: "We're excited to announce our Mock API Generator platform with enhanced features and improved performance.",
     priority: "high",
     link: "/blog/cloud-platform-launch",
     image: "https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?w=800"
   },
   {
     id: 2,
-    title: "Strategic Partnership with TechGiant",
-    date: "2024-03-10",
+    title: "Partnership with Wyreflow",
+    date: "2025-02-10",
     category: "Partnership",
-    description: "We've partnered with TechGiant to bring enterprise-grade solutions to small businesses.",
+    description: "We've partnered with Wyreflow to bring enterprise-grade solutions to small businesses.",
     priority: "medium",
     link: "/blog/techgiant-partnership",
     image: "https://images.unsplash.com/photo-1553484771-371a605b060b?w=800"
@@ -94,11 +101,132 @@ export default function AnnouncementsPage() {
 
   return (
     <div className="min-h-screen" ref={ref}>
-      <PageHero
-        title="Announcements"
-        description="Stay updated with the latest news, product launches, and company updates"
-        gradient="from-blue-500 to-purple-500"
-      />
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-background via-background/90 to-background/50">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              rotate: [0, 45, 0],
+              opacity: [0.3, 0.2, 0.3]
+            }}
+            transition={{ duration: 20, repeat: Infinity }}
+            className="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-br from-blue-500/10 via-sky-500/10 to-transparent blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              rotate: [45, 0, 45],
+              opacity: [0.2, 0.3, 0.2]
+            }}
+            transition={{ duration: 20, repeat: Infinity, delay: 10 }}
+            className="absolute -bottom-1/2 right-0 w-full h-full bg-gradient-to-tl from-sky-500/10 via-blue-500/10 to-transparent blur-3xl"
+          />
+        </div>
+
+        <div className="container relative z-10 mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="text-center space-y-8">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-block"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-sky-500/20 blur-xl" />
+                  <div className="relative bg-background/80 backdrop-blur-sm border rounded-2xl px-6 py-2">
+                    <span className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-sky-500">
+                      Latest Updates
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-6xl md:text-7xl font-bold tracking-tight"
+              >
+                Stay Informed
+                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-blue-400 to-sky-400">
+                  With Our News
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              >
+                Get the latest updates, product releases, and important announcements
+                from our team
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap justify-center gap-4 mt-8"
+              >
+                <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-sky-500 hover:from-blue-600 hover:to-sky-600">
+                  <Bell className="mr-2 h-4 w-4" />
+                  <span className="relative">Subscribe Now</span>
+                  <ArrowRight className="relative ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="group hover:border-blue-500/50 transition-colors"
+                >
+                  <Newspaper className="mr-2 h-4 w-4" />
+                  Browse Updates
+                </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
+              >
+                {[
+                  { icon: Megaphone, label: 'Announcements', value: '100+' },
+                  { icon: Rss, label: 'Monthly Updates', value: '12+' },
+                  { icon: BookOpen, label: 'Release Notes', value: '50+' },
+                  { icon: Share2, label: 'Social Shares', value: '5K+' }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-sky-500/5 blur-xl group-hover:opacity-75 transition-opacity" />
+                    <div className="relative p-6 text-center">
+                      <stat.icon className="w-8 h-8 text-blue-500 mx-auto mb-3" />
+                      <div className="font-bold text-2xl mb-1">{stat.value}</div>
+                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Decorative elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/4 h-[2px] bg-gradient-to-r from-transparent via-sky-500/40 to-transparent blur-sm" />
+      </section>
 
       <div className="container py-12">
         <div className="grid gap-8">

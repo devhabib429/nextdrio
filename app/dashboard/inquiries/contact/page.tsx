@@ -28,20 +28,25 @@ const contactRequests = [
   }
 ];
 
-const getStatusColor = (status: string) => {
-  switch (status) {
-    case 'new': return 'default';
-    case 'in_progress': return 'warning';
-    case 'completed': return 'success';
-    default: return 'secondary';
-  }
-};
+type StatusVariant = "default" | "secondary" | "destructive" | "outline"
 
-const getStatusText = (status: string) => {
-  return status.split('_').map(word => 
-    word.charAt(0).toUpperCase() + word.slice(1)
-  ).join(' ');
-};
+const getStatusColor = (status: string): StatusVariant => {
+  switch (status) {
+    case 'new': return 'default'
+    case 'in_progress': return 'secondary'
+    case 'completed': return 'outline'
+    default: return 'destructive'
+  }
+}
+
+const getStatusText = (status: string): string => {
+  switch (status) {
+    case 'new': return 'New'
+    case 'in_progress': return 'In Progress'
+    case 'completed': return 'Completed'
+    default: return status
+  }
+}
 
 export default function ContactRequestsPage() {
   return (

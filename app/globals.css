@@ -95,6 +95,28 @@
   animation: float 3s ease-in-out infinite;
 }
 
+/* Add these new animations and styles */
+@keyframes float-delayed {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float-delayed {
+  animation: float-delayed 4s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.hero-text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 /* Gradient animations */
 .gradient-animate {
   background-size: 200% 200%;
@@ -162,4 +184,226 @@
 
 .bg-grid-white\/10 {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Add these to your existing styles */
+.mask-edges {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 2%,
+    black 98%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 2%,
+    black 98%,
+    transparent
+  );
+}
+
+/* Enhanced background patterns */
+.bg-pattern {
+  background-image: 
+    radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 8%),
+    radial-gradient(circle at 40% 60%, rgba(255,255,255,0.1) 0%, transparent 12%);
+  background-position: 0 0, 0 0;
+  background-size: 16px 16px;
+  background-repeat: repeat;
+}
+
+/* Add these new animations and styles */
+@keyframes grid-flow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(32px);
+  }
+}
+
+.animate-grid-flow {
+  animation: grid-flow 20s linear infinite;
+}
+
+.hero-text-glow {
+  text-shadow: 
+    0 0 10px rgba(255,255,255,0.3),
+    0 0 20px rgba(255,255,255,0.2),
+    0 0 30px rgba(255,255,255,0.1);
+}
+
+/* Enhanced glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-panel {
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Gradient text animation */
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    #fff,
+    #fff 50%,
+    rgba(255, 255, 255, 0.7) 50%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 0.5s ease;
+}
+
+.gradient-text:hover {
+  background-position: 0%;
+}
+
+/* Add these new styles for enhanced service cards */
+.service-card-glow {
+  position: relative;
+}
+
+.service-card-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 0%, 
+    rgba(120, 119, 198, 0.1),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-card-glow:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced gradient animations */
+.gradient-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(45deg);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* Modern Service Card Styles */
+.service-card-modern {
+  @apply relative p-8 rounded-2xl border bg-background/50 backdrop-blur-sm
+         transition-all duration-300 hover:shadow-xl hover:border-primary/50;
+}
+
+.service-icon-wrapper {
+  @apply mb-6 p-4 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600
+         w-16 h-16 flex items-center justify-center
+         transition-transform duration-300 group-hover:scale-110;
+}
+
+.service-button {
+  @apply bg-gradient-to-r from-violet-600 to-indigo-600
+         hover:from-violet-700 hover:to-indigo-700 border-0
+         transition-all duration-300 transform group-hover:translate-y-0;
+}
+
+.service-card-decoration {
+  @apply absolute inset-0 bg-gradient-to-r from-violet-600/5 to-indigo-600/5
+         rounded-2xl blur-xl opacity-0 group-hover:opacity-100
+         transition-opacity duration-300 -z-10;
+}
+
+/* Process Timeline Styles */
+.process-timeline {
+  @apply grid grid-cols-1 md:grid-cols-4 gap-8 relative;
+}
+
+.process-step {
+  @apply relative p-6 text-center;
+}
+
+.process-number {
+  @apply w-12 h-12 rounded-full bg-primary/10 text-primary
+         flex items-center justify-center text-xl font-bold
+         mx-auto transition-transform duration-300 hover:scale-110;
+}
+
+/* Add connecting lines between process steps */
+@screen md {
+  .process-timeline::before {
+    content: '';
+    @apply absolute top-14 left-0 w-full h-0.5 bg-primary/10;
+  }
+  
+  .process-step::before {
+    content: '';
+    @apply absolute top-14 left-1/2 w-0.5 h-full bg-primary/10;
+  }
+}
+
+/* Enhanced hover effects */
+.service-card-modern:hover {
+  transform: translateY(-5px);
+}
+
+.process-step:hover .process-number {
+  @apply bg-primary text-white;
+}
+
+/* Add these new styles */
+.bg-grid-white {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.1'%3E%3Cpath opacity='.5' d='M96 95h4v1h-4v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4h-9v4h-1v-4H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15v-9H0v-1h15V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h9V0h1v15h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9h4v1h-4v9zm-1 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm9-10v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-10 0v-9h-9v9h9zm-9-10h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9zm10 0h9v-9h-9v9z'/%3E%3Cpath d='M6 5V0H5v5H0v1h5v94h1V6h94V5H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.3; }
+}
+
+.animate-pulse {
+  animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }

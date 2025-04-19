@@ -18,7 +18,10 @@ import {
   Bug,
   Lightbulb,
   Heart,
-  Award
+  Award,
+  ArrowRight,
+  GitFork,
+  Download
 } from "lucide-react";
 
 const featuredProjects = [
@@ -108,11 +111,130 @@ export default function OpenSource() {
 
   return (
     <div className="min-h-screen" ref={ref}>
-      <PageHero
-        title="Open Source Projects"
-        description="Join our open source community and help build the future of technology. Explore our projects and start contributing today."
-        gradient="from-purple-500 to-pink-500"
-      />
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-background via-background/90 to-background/50">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              rotate: [0, 45, 0],
+              opacity: [0.3, 0.2, 0.3]
+            }}
+            transition={{ duration: 20, repeat: Infinity }}
+            className="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-br from-pink-500/10 via-rose-500/10 to-transparent blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              rotate: [45, 0, 45],
+              opacity: [0.2, 0.3, 0.2]
+            }}
+            transition={{ duration: 20, repeat: Infinity, delay: 10 }}
+            className="absolute -bottom-1/2 right-0 w-full h-full bg-gradient-to-tl from-rose-500/10 via-pink-500/10 to-transparent blur-3xl"
+          />
+        </div>
+
+        <div className="container relative z-10 mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="text-center space-y-8">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-block"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-pink-500/20 to-rose-500/20 blur-xl" />
+                  <div className="relative bg-background/80 backdrop-blur-sm border rounded-2xl px-6 py-2">
+                    <span className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-rose-500">
+                      Community & Collaboration
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-6xl md:text-7xl font-bold tracking-tight"
+              >
+                Contributing to
+                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 via-pink-400 to-rose-400">
+                  Open Source
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              >
+                Discover our open source projects and contributions to the global developer community
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap justify-center gap-4 mt-8"
+              >
+                <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600">
+                  <span className="relative">Explore Projects</span>
+                  <ArrowRight className="relative ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="group hover:border-pink-500/50 transition-colors"
+                >
+                  <Github className="mr-2 h-4 w-4" />
+                  View on GitHub
+                </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
+              >
+                {[
+                  { icon: GitFork, label: 'Repositories', value: '3+' },
+                  { icon: Star, label: 'GitHub Stars', value: '100+' },
+                  { icon: Users, label: 'Contributors', value: '10+' },
+                  { icon: Download, label: 'Downloads', value: '1K+' }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-pink-500/5 to-rose-500/5 blur-xl group-hover:opacity-75 transition-opacity" />
+                    <div className="relative p-6 text-center">
+                      <stat.icon className="w-8 h-8 text-pink-500 mx-auto mb-3" />
+                      <div className="font-bold text-2xl mb-1">{stat.value}</div>
+                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Decorative elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-pink-500/20 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/4 h-[2px] bg-gradient-to-r from-transparent via-rose-500/40 to-transparent blur-sm" />
+      </section>
 
       {/* Featured Projects */}
       <section className="container py-24">
@@ -208,10 +330,10 @@ export default function OpenSource() {
       <section className="container py-24">
         <div className="grid md:grid-cols-4 gap-8">
           {[
-            { icon: Users, value: "5,000+", label: "Contributors" },
-            { icon: Star, value: "15K+", label: "GitHub Stars" },
-            { icon: GitPullRequest, value: "2,500+", label: "Pull Requests" },
-            { icon: Heart, value: "100+", label: "Active Projects" }
+            { icon: Users, value: "100+", label: "Contributors" },
+            { icon: Star, value: "1K+", label: "GitHub Stars" },
+            { icon: GitPullRequest, value: "250+", label: "Pull Requests" },
+            { icon: Heart, value: "3+", label: "Active Projects" }
           ].map((stat, index) => (
             <motion.div
               key={stat.label}

@@ -38,20 +38,25 @@ const applications = [
   }
 ];
 
-const getStatusColor = (status: string) => {
-  switch (status) {
-    case 'under_review': return 'default';
-    case 'shortlisted': return 'success';
-    case 'rejected': return 'destructive';
-    default: return 'secondary';
-  }
-};
+type StatusVariant = "default" | "secondary" | "destructive" | "outline"
 
-const getStatusText = (status: string) => {
-  return status.split('_').map(word => 
-    word.charAt(0).toUpperCase() + word.slice(1)
-  ).join(' ');
-};
+const getStatusColor = (status: string): StatusVariant => {
+  switch (status) {
+    case 'under_review': return 'default'
+    case 'shortlisted': return 'secondary'
+    case 'rejected': return 'destructive'
+    default: return 'outline'
+  }
+}
+
+const getStatusText = (status: string): string => {
+  switch (status) {
+    case 'under_review': return 'Under Review'
+    case 'shortlisted': return 'Shortlisted'
+    case 'rejected': return 'Rejected'
+    default: return status
+  }
+}
 
 export default function ApplicationsPage() {
   return (

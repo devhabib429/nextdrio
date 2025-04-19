@@ -28,6 +28,16 @@ export default function CareersPage() {
   const [showAddModal, setShowAddModal] = useState(false);
   const [editingCareer, setEditingCareer] = useState<Career | null>(null);
 
+  const handleAdd = async (career: Partial<Career>) => {
+    await addItem(career);
+    setShowAddModal(false);
+  };
+
+  const handleUpdate = async (id: string, career: Partial<Career>) => {
+    await updateItem(id, career);
+    setEditingCareer(null);
+  };
+
   if (loading) return <LoadingSpinner />;
   if (error) return <div className="text-red-500 p-4">{error}</div>;
 
@@ -91,13 +101,13 @@ export default function CareersPage() {
       <AddCareerModal 
         open={showAddModal}
         onClose={() => setShowAddModal(false)}
-        onAdd={addItem}
+        onAdd={handleAdd}
       />
 
       <EditCareerModal
         career={editingCareer}
         onClose={() => setEditingCareer(null)}
-        onUpdate={updateItem}
+        onUpdate={handleUpdate}
       />
     </div>
   );

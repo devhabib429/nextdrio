@@ -1,23 +1,53 @@
 import type { Event, Project, Service } from '../types';
+import {
+    Trophy, Users, Target, Code2, Cloud, GitBranch,
+    Rocket, Shield, Database
+} from 'lucide-react';
 
 export const sampleServices: Service[] = [
     {
         id: '1',
-        name: 'Web Development',
+        title: 'Web Development',
         description: 'Custom web applications built with modern technologies',
-        icon: 'Code',
+        gradient: 'from-blue-500 to-cyan-500',
+        metrics: [
+            { label: 'Projects', value: '100+', icon: Trophy },
+            { label: 'Clients', value: '50+', icon: Users }
+        ],
         features: ['Responsive Design', 'SEO Optimization'],
         benefits: ['Increased User Engagement', 'Better Performance'],
-        technologies: ['React', 'Node.js', 'TypeScript']
+        process: [
+            { title: 'Planning', description: 'Project scoping and planning', icon: Target },
+            { title: 'Development', description: 'Agile development process', icon: Code2 }
+        ],
+        expertise: [
+            { title: 'Frontend', description: 'Modern UI development', icon: Code2 },
+            { title: 'Backend', description: 'Scalable server solutions', icon: Database }
+        ],
+        technologies: ['React', 'Node.js', 'TypeScript'],
+        slug: 'web-development'
     },
     {
         id: '2',
-        name: 'DevOps',
+        title: 'DevOps',
         description: 'Streamline your development and deployment processes',
-        icon: 'GitBranch',
+        gradient: 'from-purple-500 to-pink-500',
+        metrics: [
+            { label: 'Deployments', value: '1000+', icon: Rocket },
+            { label: 'Uptime', value: '99.9%', icon: Shield }
+        ],
         features: ['CI/CD Pipeline', 'Cloud Deployment'],
         benefits: ['Faster Deployment', 'Reduced Errors'],
-        technologies: ['Docker', 'Kubernetes', 'Jenkins']
+        process: [
+            { title: 'Automation', description: 'Setup CI/CD pipelines', icon: GitBranch },
+            { title: 'Deployment', description: 'Cloud infrastructure setup', icon: Cloud }
+        ],
+        expertise: [
+            { title: 'Cloud', description: 'Cloud infrastructure management', icon: Cloud },
+            { title: 'Security', description: 'DevSecOps practices', icon: Shield }
+        ],
+        technologies: ['Docker', 'Kubernetes', 'Jenkins'],
+        slug: 'devops'
     }
 ];
 
@@ -162,28 +192,26 @@ export const sampleProjects: Project[] = [
 
 export const sampleEvents: Event[] = [
     {
-        id: '1',
-        name: 'Tech Conference 2024',
-        description: 'Annual technology conference',
-        date: '2024-06-15',
-        location: 'San Francisco, CA',
-        time: '09:00 AM PST',
-        type: 'Conference',
-        topics: ['AI', 'Web Development', 'Cloud Computing'],
-        speakers: ['John Doe', 'Jane Smith'],
-        link: 'https://conference2024.com'
+        id: 1,
+        title: "Cloud Computing Summit 2024",
+        description: "Join us for the latest in cloud technologies and practices",
+        date: "2024-04-15",
+        time: "9:00 AM",
+        location: "Virtual",
+        topics: ["Cloud", "DevOps", "Security"],
+        link: "/events/cloud-summit-2024",
+        category: "Conferences"
     },
     {
-        id: '2',
-        name: 'Developer Workshop',
-        description: 'Hands-on coding workshop',
-        date: '2024-07-20',
-        location: 'Online',
-        time: '02:00 PM PST',
-        type: 'Workshop',
-        topics: ['JavaScript', 'React', 'TypeScript'],
-        speakers: ['Bob Wilson', 'Alice Brown'],
-        link: 'https://workshop2024.com'
+        id: 2,
+        title: "DevOps Workshop Series",
+        description: "Hands-on workshop covering modern DevOps practices",
+        date: "2024-05-01",
+        time: "2:00 PM",
+        location: "New York",
+        topics: ["CI/CD", "Automation", "Containers"],
+        link: "/events/devops-workshop",
+        category: "Workshops"
     }
 ];
 
@@ -305,4 +333,37 @@ export const industrySolutions = [
         ],
         technologies: ['IoT', 'AI/ML', 'Cloud']
     }
+];
+
+export interface Career {
+    _id: string;
+    title: string;
+    department: string;
+    location: string;
+    type: string;
+    experience: string;
+    description: string;
+    requirements: string[];
+    benefits: string[];
+    status: 'open' | 'closed';
+}
+
+export interface Inquiry {
+    _id: string;
+    type: 'contact' | 'project';
+    name: string;
+    email: string;
+    company: string;
+    message: string;
+    service?: string;
+    status: 'new' | 'inProgress' | 'completed';
+    createdAt: string;
+}
+
+export const mockCareers: Career[] = [
+    // ... your existing mock careers data
+];
+
+export const mockInquiries: Inquiry[] = [
+    // ... your existing mock inquiries data
 ];

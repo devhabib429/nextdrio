@@ -6,10 +6,10 @@ import { useState } from "react";
 import PageHero from "@/components/page-hero";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { 
-  Briefcase, 
-  MapPin, 
-  Clock, 
+import {
+  Briefcase,
+  MapPin,
+  Clock,
   ArrowRight,
   Building2,
   GraduationCap,
@@ -17,7 +17,13 @@ import {
   Heart,
   Coffee,
   Laptop,
-  CheckCircle2
+  CheckCircle2,
+  Rocket,
+  Globe,
+  Target,
+  HeartHandshake,
+  Zap,
+  Medal
 } from "lucide-react";
 import Link from "next/link";
 
@@ -150,11 +156,131 @@ export default function CareersPage() {
 
   return (
     <div className="min-h-screen" ref={ref}>
-      <PageHero
-        title="Join Our Team"
-        description="Build the future with us. Explore exciting career opportunities and grow professionally."
-        gradient="from-green-500 to-blue-500"
-      />
+      <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-gradient-to-b from-background via-background/90 to-background/50">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute inset-0 bg-grid-white/[0.02] bg-[size:50px_50px]" />
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              rotate: [0, 45, 0],
+              opacity: [0.3, 0.2, 0.3]
+            }}
+            transition={{ duration: 20, repeat: Infinity }}
+            className="absolute -top-1/2 left-0 w-full h-full bg-gradient-to-br from-teal-500/10 via-cyan-500/10 to-transparent blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              rotate: [45, 0, 45],
+              opacity: [0.2, 0.3, 0.2]
+            }}
+            transition={{ duration: 20, repeat: Infinity, delay: 10 }}
+            className="absolute -bottom-1/2 right-0 w-full h-full bg-gradient-to-tl from-cyan-500/10 via-teal-500/10 to-transparent blur-3xl"
+          />
+        </div>
+
+        <div className="container relative z-10 mt-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="text-center space-y-8">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2 }}
+                className="inline-block"
+              >
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-cyan-500/20 blur-xl" />
+                  <div className="relative bg-background/80 backdrop-blur-sm border rounded-2xl px-6 py-2">
+                    <span className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-teal-500 to-cyan-500">
+                      Join Our Team
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-6xl md:text-7xl font-bold tracking-tight"
+              >
+                Build the Future
+                <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-teal-500 via-teal-400 to-cyan-400">
+                  With Us
+                </span>
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-xl text-muted-foreground max-w-3xl mx-auto"
+              >
+                Join a team of innovators and problem solvers shaping the future of technology
+              </motion.p>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="flex flex-wrap justify-center gap-4 mt-8"
+              >
+                <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600">
+                  <Briefcase className="mr-2 h-4 w-4" />
+                  <span className="relative">View Open Positions</span>
+                  <ArrowRight className="relative ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="group hover:border-teal-500/50 transition-colors"
+                >
+                  <Building2 className="mr-2 h-4 w-4" />
+                  Our Culture
+                </Button>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
+              >
+                {[
+                  { icon: Rocket, label: 'Open Positions', value: '2+' },
+                  { icon: Globe, label: 'Office Locations', value: '1+' },
+                  { icon: Users, label: 'Team Members', value: '15+' },
+                  { icon: GraduationCap, label: 'Learning Budget', value: '$2K' }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.7 + index * 0.1 }}
+                    className="relative group"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-teal-500/5 to-cyan-500/5 blur-xl group-hover:opacity-75 transition-opacity" />
+                    <div className="relative p-6 text-center">
+                      <stat.icon className="w-8 h-8 text-teal-500 mx-auto mb-3" />
+                      <div className="font-bold text-2xl mb-1">{stat.value}</div>
+                      <div className="text-sm text-muted-foreground">{stat.label}</div>
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Decorative elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-teal-500/20 to-transparent" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1/4 h-[2px] bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent blur-sm" />
+      </section>
 
       {/* Why Join Us Section */}
       <section className="container py-24">
@@ -235,11 +361,11 @@ export default function CareersPage() {
                       </Badge>
                     </div>
                   </div>
-                  
+
                   <p className="text-muted-foreground">
                     {position.description}
                   </p>
-                  
+
                   <div className="space-y-4">
                     <div>
                       <h4 className="font-semibold mb-2">Requirements:</h4>
@@ -249,7 +375,7 @@ export default function CareersPage() {
                         ))}
                       </ul>
                     </div>
-                    
+
                     <div>
                       <h4 className="font-semibold mb-2">Benefits:</h4>
                       <ul className="list-disc list-inside text-muted-foreground">
@@ -260,11 +386,13 @@ export default function CareersPage() {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="flex lg:flex-col justify-start gap-4">
-                  <Button size="lg">
-                    Apply Now <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
+                  <Link href="https://docs.google.com/forms/d/e/1FAIpQLSdRlwlC_pSlb_kiR_h6i7S9U6WYrHg-krB3LXopolXJyelsNQ/viewform?usp=header">
+                    <Button size="lg">
+                      Apply Now <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
                   <Button variant="outline" size="lg">
                     Learn More
                   </Button>

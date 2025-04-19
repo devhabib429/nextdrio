@@ -7,6 +7,7 @@ const navigation = {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Projects", href: "/projects" },
+    { name: "Team", href: "/team" },
     { name: "Open Source", href: "/open-source" },
     { name: "Events", href: "/events" },
     { name: "Announcements", href: "/announcements" },
@@ -38,11 +39,22 @@ const resources = [
   { name: "Support", href: "/support" },
 ];
 
+const footerNav = [
+  {
+    title: "Services",
+    links: [
+      { href: "/services/devops", label: "DevOps Solutions" },
+      { href: "/services/erpnext", label: "ERPNext Solutions" },
+      { href: "/services", label: "All Services" }
+    ]
+  }
+];
+
 export default function Footer() {
   return (
     <footer className="border-t bg-card">
       <div className="container py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           {/* Brand Section */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -71,6 +83,23 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Services Section */}
+          <div>
+            <h3 className="text-sm font-semibold mb-4">Services</h3>
+            <ul className="space-y-3">
+              {footerNav[0].links.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Contact Information */}
           <div>
             <h3 className="text-sm font-semibold mb-4">Contact Us</h3>
@@ -81,11 +110,11 @@ export default function Footer() {
               </li>
               <li className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4" />
-                <span>+1 (555) 000-0000</span>
+                <span>+91 8874131212</span>
               </li>
               <li className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4" />
-                <span>123 Innovation Street, Tech Valley, CA 94025</span>
+                <span>Remote</span>
               </li>
             </ul>
           </div>
