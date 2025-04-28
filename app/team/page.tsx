@@ -17,6 +17,7 @@ import {
   Globe
 } from "lucide-react";
 import Link from "next/link";
+import TeamGallery from "@/components/team-gallery";
 
 const teamMembers = [
   {
@@ -119,6 +120,24 @@ const achievements = [
   { number: "98%", label: "Client Satisfaction" }
 ];
 
+const teamGalleryImages = [
+  {
+    src: "/images/team/team-photos/team-1.jpg",
+    alt: "Team working together",
+    caption: "Our development team collaborating on a project"
+  },
+  {
+    src: "/images/team/team-photos/team-2.jpg",
+    alt: "Team meeting",
+    caption: "Weekly team standup meeting"
+  },
+  {
+    src: "/images/team/team-photos/team-3.jpg",
+    alt: "Team celebration",
+    caption: "Celebrating project success"
+  }
+];
+
 export default function TeamPage() {
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -202,9 +221,11 @@ export default function TeamPage() {
                 transition={{ delay: 0.5 }}
                 className="flex flex-wrap justify-center gap-4 mt-8"
               >
-                <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600">
-                  <span className="relative">Join Our Team</span>
-                  <ArrowRight className="relative ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600" asChild>
+                  <Link href="/careers">
+                    <span className="relative">Join Our Team</span>
+                    <ArrowRight className="relative ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Link>
                 </Button>
                 <Button
                   variant="outline"
@@ -346,6 +367,29 @@ export default function TeamPage() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* Teams Gallery Section */}
+      <section className="container py-24">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl font-bold mb-4">Our Team in Action</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Take a look at our team's daily activities and moments that make our workplace special
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.2 }}
+          className="max-w-4xl mx-auto"
+        >
+          <TeamGallery images={teamGalleryImages} />
+        </motion.div>
       </section>
 
       {/* Join Our Team Section */}

@@ -30,9 +30,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { sampleEvents } from "@/lib/data";
+import { sampleEvents, getEventsByType, formatEventDate, formatEventTime } from "@/app/data/events";
 import TabCapsule from "@/components/tab-capsule";
-import { Event } from '@/types'  // Add this import
+import { Event as EventType } from '@/app/data/events/types';  // Import the correct Event type
 
 const eventCategories = [
   "All Events",
@@ -138,11 +138,22 @@ export default function EventsPage() {
 
   const [selectedCategory, setSelectedCategory] = useState("All Events");
 
-  const categories = ["All", "Conference", "Workshop", "Meetup", "Hackathon"];
+  // Map UI categories to event types
+  const categoryToTypeMap: Record<string, string | null> = {
+    "All Events": null,
+    "Conferences": "conference",
+    "Workshops": "workshop",
+    "Webinars": "webinar",
+    "Meetups": "meetup"
+  };
 
+  // Filter events based on selected category
   const filteredEvents = selectedCategory === "All Events"
     ? sampleEvents
-    : sampleEvents.filter(event => event.category === selectedCategory);
+    : sampleEvents.filter(event => event.type === categoryToTypeMap[selectedCategory]);
+
+  // Get featured event (first conference)
+  const featuredEvent = sampleEvents.find(event => event.type === "conference");
 
   return (
     <div className="min-h-screen" ref={ref}>
@@ -276,7 +287,7 @@ export default function EventsPage() {
       {/* Event Categories */}
       <section className="container py-12">
         <TabCapsule
-          items={categories}
+          items={eventCategories}
           activeItem={selectedCategory}
           onSelect={setSelectedCategory}
           gradient="from-blue-500 to-purple-500"
@@ -284,144 +295,222 @@ export default function EventsPage() {
       </section>
 
       {/* Featured Event */}
-      <section className="container py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="mb-16 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl p-8"
-        >
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
-              <div className="flex items-center gap-2 text-primary">
-                <Star className="w-5 h-5" />
-                <span className="text-sm font-medium">Featured Event</span>
+      {featuredEvent && (
+        <section className="container py-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            className="mb-16 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl p-8"
+          >
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                <div className="flex items-center gap-2 text-primary">
+                  <Star className="w-5 h-5" />
+                  <span className="text-sm font-medium">Featured Event</span>
+                </div>
+                <h2 className="text-3xl font-bold">{featuredEvent.title}</h2>
+                <p className="text-muted-foreground">
+                  {featuredEvent.description}
+                </p>
+                <div className="flex flex-wrap gap-6">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-primary" />
+                    <span>{formatEventDate(featuredEvent.date)}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-primary" />
+                    <span>{featuredEvent.location.city}, {featuredEvent.location.country}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Users className="w-5 h-5 text-primary" />
+                    <span>{featuredEvent.capacity} Attendees</span>
+                  </div>
+                </div>
+                <Button size="lg" className="group">
+                  Register Now
+                  <Rocket className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </div>
-              <h2 className="text-3xl font-bold">Tech Conference 2024</h2>
-              <p className="text-muted-foreground">
-                Join industry leaders and innovators for our biggest tech conference yet.
-                Discover the latest trends, network with peers, and gain valuable insights.
-              </p>
-              <div className="flex flex-wrap gap-6">
-                <div className="flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-primary" />
-                  <span>June 15-17, 2024</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-primary" />
-                  <span>San Francisco, CA</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="w-5 h-5 text-primary" />
-                  <span>1000+ Attendees</span>
-                </div>
+              <div className="relative aspect-video rounded-xl overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20" />
+                <img
+                  src={featuredEvent.image}
+                  alt={featuredEvent.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              <Button size="lg" className="group">
-                Register Now
-                <Rocket className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
             </div>
-            <div className="relative aspect-video rounded-xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20" />
-              <img
-                src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=60"
-                alt="Tech Conference"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </motion.div>
-      </section>
+          </motion.div>
+        </section>
+      )}
 
-      {/* Event Grid */}
-      <section className="container py-24">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredEvents.map((event: Event) => (
+      {/* Events Grid */}
+      <section className="container py-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredEvents.map((event: EventType) => (
             <motion.div
               key={event.id}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: event.id * 0.1 }}
-              className="group rounded-xl border bg-card p-6 hover:shadow-lg transition-all"
+              className="group relative overflow-hidden rounded-2xl border bg-card hover:shadow-lg transition-all duration-300"
             >
-              <div className="space-y-4">
-                <div className="flex justify-between items-start">
-                  <div className="space-y-2">
-                    <h3 className="font-semibold group-hover:text-primary transition-colors">
-                      {event.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2">
-                      {event.description}
-                    </p>
+              <div className="aspect-video relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20" />
+                <div className="absolute inset-0 bg-grid-white/10" />
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary">
+                    {event.type.charAt(0).toUpperCase() + event.type.slice(1)}
+                  </span>
+                </div>
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="w-full h-full object-cover opacity-50 group-hover:opacity-75 transition-opacity"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                  {event.title}
+                </h3>
+                <p className="text-muted-foreground mb-4 line-clamp-2">
+                  {event.description}
+                </p>
+                <div className="flex flex-wrap gap-4 text-sm text-muted-foreground mb-4">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    {formatEventDate(event.date)}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    {formatEventTime(event.startTime)} - {formatEventTime(event.endTime)}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <MapPin className="w-4 h-4" />
+                    {event.location.city}, {event.location.country}
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Users className="w-4 h-4" />
+                    {event.capacity} spots
                   </div>
                 </div>
-                <div className="space-y-3 text-sm">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-primary" />
-                    <span>{event.date}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-primary" />
-                    <span>{event.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-primary" />
-                    <span>{event.time}</span>
-                  </div>
+                <div className="flex flex-wrap gap-2">
+                  {event.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 text-xs rounded-full bg-secondary"
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
-                  <div className="flex flex-wrap gap-2">
-                    {event.topics?.map((topic) => (
-                      <span
-                        key={topic}
-                        className="px-2 py-1 text-xs rounded-full bg-secondary"
-                      >
-                        {topic}
-                      </span>
-                    ))}
-                  </div>
-                <Button variant="outline" className="w-full group" asChild>
-                  <Link href={event.link || '#'}>
-                    Learn More
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                </Button>
+                <div className="flex gap-2 mt-4">
+                  <Button variant="outline" className="flex-1 group" asChild>
+                    <Link href={`/events/${event.id}`}>
+                      Learn More
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                  <Button className="flex-1 group">
+                    Register
+                    <Rocket className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Event Benefits */}
       <section className="container py-24 bg-gradient-to-b from-background to-secondary/10 rounded-3xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4">Community Impact</h2>
+          <h2 className="text-3xl font-bold mb-4">Why Attend Our Events?</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Join thousands of tech enthusiasts and professionals in our growing community
+            Get access to exclusive content, networking opportunities, and hands-on learning experiences
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-4 gap-8">
-          {[
-            { icon: Users, value: "10,000+", label: "Community Members" },
-            { icon: Calendar, value: "150+", label: "Events Hosted" },
-            { icon: Globe, value: "40+", label: "Countries" },
-            { icon: MessageCircle, value: "5,000+", label: "Discussions" }
-          ].map((stat, index) => (
+        <div className="grid md:grid-cols-3 gap-8">
+          {eventBenefits.map((benefit, index) => (
             <motion.div
-              key={stat.label}
+              key={benefit.title}
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="text-center group"
+              className="relative group"
             >
-              <div className="mb-4 p-4 rounded-xl bg-background/50 border group-hover:shadow-lg transition-all mx-auto w-fit">
-                <stat.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl blur-xl group-hover:opacity-75 transition-opacity" />
+              <div className="relative p-6 rounded-2xl border bg-card">
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${benefit.color} p-2.5 mb-4`}>
+                  <benefit.icon className="w-full h-full text-white" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{benefit.title}</h3>
+                <p className="text-muted-foreground mb-4">{benefit.description}</p>
+                <ul className="space-y-2">
+                  {benefit.features.map((feature) => (
+                    <li key={feature} className="flex items-center gap-2 text-sm">
+                      <CheckCircle2 className="w-4 h-4 text-primary" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <div className="text-3xl font-bold text-primary mb-2">{stat.value}</div>
-              <div className="text-sm text-muted-foreground">{stat.label}</div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Success Stories */}
+      <section className="container py-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl font-bold mb-4">Success Stories</h2>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Hear from our community members about their experiences at our events
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {successStories.map((story, index) => (
+            <motion.div
+              key={story.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative group"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 rounded-2xl blur-xl group-hover:opacity-75 transition-opacity" />
+              <div className="relative p-6 rounded-2xl border bg-card">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 p-0.5">
+                    <div className="w-full h-full rounded-full bg-background flex items-center justify-center">
+                      <span className="text-lg font-semibold">{story.name.charAt(0)}</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">{story.name}</h3>
+                    <p className="text-sm text-muted-foreground">{story.role}</p>
+                  </div>
+                </div>
+                <p className="text-muted-foreground mb-4">{story.testimonial}</p>
+                <div className="flex flex-wrap gap-2">
+                  {story.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2 py-1 text-xs rounded-full bg-secondary"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -439,7 +528,7 @@ export default function EventsPage() {
               Join Community <Users className="ml-2 h-4 w-4" />
             </Link>
           </Button>
-      </div>
+        </div>
       </section>
     </div>
   );

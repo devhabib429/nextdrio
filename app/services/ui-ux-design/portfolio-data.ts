@@ -16,7 +16,7 @@ export const portfolioProjects: PortfolioProject[] = [
     id: "ecommerce-redesign",
     title: "E-commerce Platform Redesign",
     category: "Web Design",
-    image: "/portfolio/ecommerce.jpg",
+    image: "/images/services/ui-ux-design/ecommerce.jpg",
     description: "Complete redesign of an e-commerce platform resulting in 150% increase in conversion rate",
     metrics: [
       "150% Conversion Rate",
@@ -26,13 +26,13 @@ export const portfolioProjects: PortfolioProject[] = [
     tags: ["E-commerce", "Web Design", "UI/UX", "Redesign"],
     client: "Fashion Retailer",
     year: "2023",
-    link: "/portfolio/ecommerce"
+    link: "/services/ui-ux-design/portfolio/ecommerce"
   },
   {
     id: "healthcare-app",
     title: "Healthcare App Interface",
     category: "Mobile Design",
-    image: "/portfolio/healthcare.jpg",
+    image: "/images/services/ui-ux-design/healthcare.jpg",
     description: "Intuitive healthcare app design improving patient engagement and satisfaction",
     metrics: [
       "85% Patient Satisfaction",
@@ -42,13 +42,13 @@ export const portfolioProjects: PortfolioProject[] = [
     tags: ["Healthcare", "Mobile App", "UI Design", "Patient Care"],
     client: "Healthcare Provider",
     year: "2023",
-    link: "/portfolio/healthcare"
+    link: "/services/ui-ux-design/portfolio/healthcare"
   },
   {
     id: "financial-dashboard",
     title: "Financial Dashboard",
     category: "Enterprise UI",
-    image: "/portfolio/finance.jpg",
+    image: "/images/services/ui-ux-design/finance.jpg",
     description: "Modern financial dashboard design for better data visualization and decision making",
     metrics: [
       "200% Efficiency",
@@ -58,6 +58,6 @@ export const portfolioProjects: PortfolioProject[] = [
     tags: ["Finance", "Dashboard", "Data Visualization", "Enterprise"],
     client: "Financial Institution",
     year: "2023",
-    link: "/portfolio/finance"
+    link: "/services/ui-ux-design/portfolio/finance"
   }
 ]; 

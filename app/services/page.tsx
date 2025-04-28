@@ -290,12 +290,12 @@ export default function Services() {
                 ))}
               </ul>
 
-              <Button 
-                className="w-full bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
-                onClick={() => setShowContactDialog(true)}
+              <Link 
+                href={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`}
+                className="inline-flex items-center text-primary hover:text-primary/80 transition-colors"
               >
-                Get Started <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+                Learn More <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </motion.div>
           ))}
         </div>

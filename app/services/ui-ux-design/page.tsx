@@ -36,6 +36,7 @@ import {
   Calendar,
   Building
 } from "lucide-react";
+import ServiceCTA from "@/components/service-cta"
 
 const features = [
   {
@@ -623,6 +624,8 @@ export default function UIUXDesignPage() {
           </motion.div>
         </div>
       </section>
+
+      <ServiceCTA />
 
       <ContactDialog
         open={showContactDialog}

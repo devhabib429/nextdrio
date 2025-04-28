@@ -254,65 +254,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Technologies Section */}
-      <section className="py-12 sm:py-24 px-4 bg-muted dark:bg-muted/50">
-        <div className="container">
-          <SectionHeader
-            title="Technologies We Use"
-            subtitle="Cutting-edge solutions for modern challenges"
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {technologies.map((tech, index) => (
-              <motion.div
-                key={tech.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative overflow-hidden rounded-2xl border bg-card dark:bg-card/50 backdrop-blur-sm p-6 hover:shadow-xl transition-all duration-500"
-              >
-                {/* Animated Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                <motion.div 
-                  className="absolute inset-0 bg-grid-white/10 dark:bg-grid-white/5"
-                  animate={{
-                    backgroundPosition: ['0% 0%', '100% 100%'],
-                  }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                  }}
-                />
-                
-                <div className="relative z-10">
-                  <div className="mb-6 p-4 rounded-xl bg-primary/5 w-fit group-hover:bg-primary/10 transition-colors duration-500">
-                    <motion.div
-                      animate={{
-                        rotate: [0, 5, -5, 0],
-                      }}
-                      transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                      }}
-                    >
-                      <tech.icon className="w-8 h-8 sm:w-12 sm:h-12 text-primary group-hover:scale-110 transition-transform duration-500" />
-                    </motion.div>
-                  </div>
-                  <h3 className="text-lg font-semibold mb-2 group-hover:text-primary transition-colors duration-500">
-                    {tech.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground group-hover:text-foreground/80 transition-colors duration-500">
-                    {tech.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section */}
       <section className="py-12 sm:py-24 px-4">
         <div className="container">
