@@ -1,255 +1,218 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { useState } from "react";
-import PageHero from "@/components/page-hero";
+import { motion, useInView } from "framer-motion";
+import { useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Database,
-  Settings,
-  Boxes,
-  ArrowRight,
-  CheckCircle2,
-  Building2,
-  GraduationCap,
-  ShoppingBag,
-  Stethoscope,
-  Factory,
-  Users,
-  Wrench,
-  BookOpen,
-  BarChart,
-  Workflow,
-  Cloud,
-  Sparkles,
-  CircleDollarSign,
-  LineChart,
-  Clock,
-  Unlock,
-  AppWindow,
-  Code2,
-  Globe,
-  Award,
-  Truck,
-  Leaf,
-  Briefcase
-} from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 import ContactDialog from "@/components/contact-dialog";
 import Link from "next/link";
+import { portfolioProjects } from "./portfolio-data";
+import {
+  ArrowRight,
+  CheckCircle2,
+  Sparkles,
+  Layout,
+  Palette,
+  Smartphone,
+  Globe,
+  Users,
+  Zap,
+  Target,
+  BarChart,
+  Building2,
+  Award,
+  Laptop,
+  PenTool,
+  Eye,
+  MousePointer,
+  Code,
+  Layers,
+  Monitor,
+  Tablet,
+  ShoppingBag,
+  Heart,
+  Banknote,
+  GraduationCap,
+  Calendar,
+  Building
+} from "lucide-react";
 
 const features = [
   {
-    title: "Implementation & Setup",
-    description: "Complete ERPNext setup and configuration tailored to your business needs",
-    icon: Settings,
+    title: "User Interface Design",
+    description: "Create beautiful, intuitive interfaces that users love to interact with",
+    icon: Layout,
     benefits: [
-      "Business Process Analysis",
-      "System Configuration",
-      "Data Migration",
-      "User Training"
+      "Modern and clean design aesthetics",
+      "Consistent visual language",
+      "Intuitive navigation patterns",
+      "Responsive layouts",
+      "Accessibility compliance"
     ]
   },
   {
-    title: "Custom Development",
-    description: "Extend ERPNext functionality with custom modules and features",
-    icon: Wrench,
+    title: "User Experience Design",
+    description: "Design seamless user journeys that delight and engage",
+    icon: Users,
     benefits: [
-      "Custom Modules",
-      "Workflow Automation",
-      "Report Customization",
-      "API Integration"
+      "User-centered design approach",
+      "Information architecture",
+      "Interaction design",
+      "Usability testing",
+      "User flow optimization"
     ]
   },
   {
-    title: "Integration Services",
-    description: "Seamless integration with your existing business systems",
-    icon: Workflow,
+    title: "Mobile App Design",
+    description: "Create engaging mobile experiences that users can't put down",
+    icon: Smartphone,
     benefits: [
-      "Payment Gateway Integration",
-      "E-commerce Integration",
-      "CRM Integration",
-      "Custom API Development"
+      "Native app design",
+      "Cross-platform consistency",
+      "Touch-friendly interfaces",
+      "Mobile-first approach",
+      "App store optimization"
     ]
   },
   {
-    title: "Cloud Hosting",
-    description: "Secure and scalable cloud hosting solutions for ERPNext",
-    icon: Cloud,
+    title: "Web Design",
+    description: "Design stunning websites that convert visitors into customers",
+    icon: Globe,
     benefits: [
-      "AWS/Azure Hosting",
-      "Performance Optimization",
-      "Backup Management",
-      "Security Updates"
+      "Responsive web design",
+      "Landing page optimization",
+      "E-commerce solutions",
+      "Content strategy",
+      "SEO-friendly design"
     ]
   },
   {
-    title: "Training & Support",
-    description: "Comprehensive training and ongoing support for your team",
-    icon: BookOpen,
+    title: "Design Systems",
+    description: "Build scalable design systems that ensure consistency and efficiency",
+    icon: Layers,
     benefits: [
-      "User Training Programs",
-      "Admin Training",
-      "24/7 Support",
-      "Documentation"
+      "Component libraries",
+      "Style guides",
+      "Design tokens",
+      "Documentation",
+      "Version control"
     ]
   },
   {
-    title: "Performance Optimization",
-    description: "Optimize your ERPNext system for peak performance",
-    icon: BarChart,
+    title: "Prototyping & Testing",
+    description: "Validate designs through interactive prototypes and user testing",
+    icon: Code,
     benefits: [
-      "System Audit",
-      "Performance Tuning",
-      "Database Optimization",
-      "Workflow Enhancement"
+      "Interactive prototypes",
+      "User testing sessions",
+      "A/B testing",
+      "Usability analysis",
+      "Iterative improvement"
     ]
   }
 ];
 
 const benefits = [
   {
-    title: "Cost Reduction",
-    description: "Reduce operational costs with streamlined processes",
-    icon: CircleDollarSign,
-    stats: "40% savings"
+    title: "Increased User Engagement",
+    stats: "85%",
+    description: "Higher user engagement through intuitive and engaging interfaces",
+    icon: Users
   },
   {
-    title: "Productivity Boost",
-    description: "Improve team efficiency and productivity",
-    icon: LineChart,
-    stats: "75% faster"
+    title: "Improved Conversion Rates",
+    stats: "200%",
+    description: "Better conversion rates with optimized user journeys",
+    icon: Target
   },
   {
-    title: "Real-time Insights",
-    description: "Access critical business data instantly",
-    icon: BarChart,
-    stats: "Real-time"
+    title: "Reduced Development Time",
+    stats: "40%",
+    description: "Faster development with comprehensive design systems",
+    icon: Zap
   },
   {
-    title: "Quick Implementation",
-    description: "Get your system up and running quickly",
-    icon: Clock,
-    stats: "4-6 weeks"
+    title: "Higher Customer Satisfaction",
+    stats: "95%",
+    description: "Increased customer satisfaction through user-centered design",
+    icon: Award
+  }
+];
+
+const whyChooseUs = [
+  {
+    title: "User-Centered Approach",
+    description: "We put users first in every design decision",
+    icon: Users,
+    points: [
+      "Deep user research",
+      "Persona development",
+      "User journey mapping",
+      "Usability testing",
+      "Continuous feedback"
+    ]
+  },
+  {
+    title: "Modern Design Practices",
+    description: "Stay ahead with cutting-edge design trends and technologies",
+    icon: Layout,
+    points: [
+      "Latest design trends",
+      "Emerging technologies",
+      "Innovative solutions",
+      "Best practices",
+      "Industry standards"
+    ]
   }
 ];
 
 const industries = [
   {
-    name: "Manufacturing",
-    icon: Factory,
-    features: ["Production Planning", "Inventory Management", "Quality Control", "BOM Management"]
+    name: "E-commerce",
+    icon: ShoppingBag,
+    features: [
+      "Product page optimization",
+      "Shopping cart design",
+      "Checkout flow optimization",
+      "Mobile shopping experience"
+    ]
   },
   {
     name: "Healthcare",
-    icon: Stethoscope,
-    features: ["Patient Management", "Appointment Scheduling", "Billing", "Medical Records"]
+    icon: Heart,
+    features: [
+      "Patient portal design",
+      "Medical app interfaces",
+      "Healthcare dashboards",
+      "Accessibility compliance"
+    ]
+  },
+  {
+    name: "Finance",
+    icon: Banknote,
+    features: [
+      "Banking app design",
+      "Financial dashboards",
+      "Payment interfaces",
+      "Security-focused UX"
+    ]
   },
   {
     name: "Education",
     icon: GraduationCap,
-    features: ["Student Management", "Course Planning", "Fee Management", "Academic Calendar"]
-  },
-  {
-    name: "Retail",
-    icon: ShoppingBag,
-    features: ["POS Integration", "Inventory Control", "Customer Management", "E-commerce"]
-  },
-  {
-    name: "Financial Services",
-    icon: CircleDollarSign,
-    features: ["Account Management", "Financial Reporting", "Compliance Tracking", "Risk Assessment"]
-  },
-  {
-    name: "Real Estate",
-    icon: Building2,
-    features: ["Property Management", "Lease Tracking", "Maintenance Scheduling", "Tenant Management"]
-  },
-  {
-    name: "Logistics & Transportation",
-    icon: Truck,
-    features: ["Fleet Management", "Route Optimization", "Delivery Tracking", "Warehouse Management"]
-  },
-  {
-    name: "Agriculture",
-    icon: Leaf,
-    features: ["Crop Management", "Harvest Planning", "Equipment Tracking", "Supply Chain"]
-  },
-  {
-    name: "Construction",
-    icon: Wrench,
-    features: ["Project Management", "Resource Allocation", "Cost Tracking", "Equipment Management"]
-  },
-  {
-    name: "Hospitality",
-    icon: Users,
-    features: ["Booking Management", "Guest Services", "Staff Scheduling", "Inventory Control"]
-  },
-  {
-    name: "IT & Technology",
-    icon: Code2,
-    features: ["Project Tracking", "Resource Management", "Client Billing", "Service Delivery"]
-  },
-  {
-    name: "Professional Services",
-    icon: Briefcase,
-    features: ["Client Management", "Time Tracking", "Billing & Invoicing", "Project Planning"]
-  }
-];
-
-const whyERPNext = [
-  {
-    title: "Open Source Freedom",
-    description: "Full control over your business software with zero license fees",
-    icon: Unlock,
-    points: [
-      "100% Open Source & Transparent",
-      "No Vendor Lock-in",
-      "Community-Driven Development",
-      "Flexible Customization"
-    ]
-  },
-  {
-    title: "Cost Effectiveness",
-    description: "Significant cost savings compared to traditional ERP solutions",
-    icon: CircleDollarSign,
-    points: [
-      "No Per-User Licensing",
-      "Lower Implementation Costs",
-      "Reduced IT Infrastructure",
-      "Quick ROI"
-    ]
-  },
-  {
-    title: "All-in-One Solution",
-    description: "Comprehensive business management in a single platform",
-    icon: AppWindow,
-    points: [
-      "Accounting & Finance",
-      "HR & Payroll",
-      "Inventory & Manufacturing",
-      "CRM & Sales"
-    ]
-  },
-  {
-    title: "Modern Architecture",
-    description: "Built with cutting-edge technology for the digital age",
-    icon: Code2,
-    points: [
-      "Mobile-First Design",
-      "REST API Integration",
-      "Real-time Analytics",
-      "Cloud-Native"
+    features: [
+      "Learning platforms",
+      "Educational apps",
+      "Student portals",
+      "Interactive content"
     ]
   }
 ];
 
-export default function ERPNextPage() {
+export default function UIUXDesignPage() {
   const [showContactDialog, setShowContactDialog] = useState(false);
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const ref = useRef(null);
+  const isInView = useInView(ref, { margin: "-100px" });
 
   return (
     <div className="min-h-screen" ref={ref}>
@@ -294,7 +257,7 @@ export default function ERPNextPage() {
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 blur-xl" />
                   <div className="relative bg-background/80 backdrop-blur-sm border rounded-2xl px-6 py-2">
                     <span className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-indigo-500">
-                      Enterprise Resource Planning
+                      UI/UX Design Services
                     </span>
                   </div>
                 </div>
@@ -306,9 +269,9 @@ export default function ERPNextPage() {
                 transition={{ delay: 0.3 }}
                 className="text-6xl md:text-7xl font-bold tracking-tight"
               >
-                Transform Your
+                Create
                 <span className="block mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 via-purple-400 to-indigo-400">
-                  Business Operations
+                  Beautiful Experiences
                 </span>
               </motion.h1>
 
@@ -318,8 +281,8 @@ export default function ERPNextPage() {
                 transition={{ delay: 0.4 }}
                 className="text-xl text-muted-foreground max-w-3xl mx-auto"
               >
-                Streamline your business processes with our comprehensive ERPNext solutions
-                designed for modern enterprises
+                Transform your digital presence with stunning UI/UX design that delights users
+                and drives business growth
               </motion.p>
 
               <motion.div
@@ -329,7 +292,7 @@ export default function ERPNextPage() {
                 className="flex flex-wrap justify-center gap-4 mt-8"
               >
                 <Button size="lg" className="group relative overflow-hidden bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600">
-                  <span className="relative">Schedule Demo</span>
+                  <span className="relative">Start Your Project</span>
                   <ArrowRight className="relative ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
                 <Button
@@ -337,7 +300,7 @@ export default function ERPNextPage() {
                   size="lg"
                   className="group hover:border-purple-500/50 transition-colors"
                 >
-                  View Features
+                  View Portfolio
                 </Button>
               </motion.div>
 
@@ -348,10 +311,10 @@ export default function ERPNextPage() {
                 className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16"
               >
                 {[
-                  { icon: Building2, label: 'Enterprise Ready', value: '500+' },
-                  { icon: Users, label: 'Active Users', value: '10K+' },
-                  { icon: Globe, label: 'Countries', value: '40+' },
-                  { icon: Award, label: 'Success Rate', value: '99%' }
+                  { icon: Users, label: 'Happy Clients', value: '200+' },
+                  { icon: Award, label: 'Design Awards', value: '25+' },
+                  { icon: Globe, label: 'Countries', value: '30+' },
+                  { icon: Zap, label: 'Success Rate', value: '98%' }
                 ].map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -382,12 +345,12 @@ export default function ERPNextPage() {
       <section className="container py-24">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl font-bold mb-4">Our ERPNext Services</h2>
+          <h2 className="text-3xl font-bold mb-4">Our Design Services</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Comprehensive ERPNext solutions to streamline your business operations
+            Comprehensive UI/UX design solutions to elevate your digital presence
           </p>
         </motion.div>
 
@@ -396,7 +359,7 @@ export default function ERPNextPage() {
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative bg-card hover:bg-muted/50 border rounded-xl p-6 transition-colors"
             >
@@ -422,9 +385,9 @@ export default function ERPNextPage() {
       <section className="py-24 bg-muted/50">
         <div className="container">
           <motion.div className="text-center mb-16">
-            <h2 className="text-3xl font-bold mb-4">Business Benefits</h2>
+            <h2 className="text-3xl font-bold mb-4">Design Benefits</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Transform your operations and achieve measurable results
+              Transform your digital presence and achieve measurable results
             </p>
           </motion.div>
 
@@ -433,7 +396,7 @@ export default function ERPNextPage() {
               <motion.div
                 key={benefit.title}
                 initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="text-center group"
               >
@@ -449,26 +412,26 @@ export default function ERPNextPage() {
         </div>
       </section>
 
-      {/* Why ERPNext Section */}
+      {/* Why Choose Us Section */}
       <section className="py-24 bg-muted/30">
         <div className="container">
           <motion.div className="text-center mb-16">
-            <span className="text-primary font-semibold">Why Choose ERPNext?</span>
+            <span className="text-primary font-semibold">Why Choose Us?</span>
             <h2 className="text-4xl font-bold mt-2 mb-4">
-              The Future of Business Management
+              Excellence in Design
             </h2>
             <p className="text-muted-foreground max-w-3xl mx-auto">
-              ERPNext is revolutionizing how businesses operate with its modern, 
-              comprehensive, and cost-effective approach to enterprise resource planning
+              We combine creativity with user-centered design principles to create
+              exceptional digital experiences that drive results
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {whyERPNext.map((reason, index) => (
+            {whyChooseUs.map((reason, index) => (
               <motion.div
                 key={reason.title}
                 initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="bg-background p-8 rounded-xl border group hover:shadow-lg transition-all duration-300"
               >
@@ -491,19 +454,109 @@ export default function ERPNextPage() {
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             className="bg-gradient-to-r from-primary/5 to-primary/10 rounded-2xl p-8 text-center max-w-3xl mx-auto"
           >
             <h3 className="text-2xl font-bold mb-4">
-              The Smart Choice for Modern Businesses
+              Let's Create Something Amazing Together
             </h3>
             <p className="text-muted-foreground mb-6">
-              Join thousands of companies worldwide who have transformed their operations 
-              with ERPNext. From startups to enterprises, ERPNext provides the tools 
-              you need to streamline processes, reduce costs, and drive growth.
+              Join hundreds of satisfied clients who have transformed their digital presence
+              with our UI/UX design services. From startups to enterprises, we help you
+              create experiences that users love and businesses thrive on.
             </p>
             <Button size="lg" onClick={() => setShowContactDialog(true)}>
-              Explore ERPNext Solutions <ArrowRight className="ml-2 h-4 w-4" />
+              Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="py-24 bg-muted/30">
+        <div className="container">
+          <motion.div className="text-center mb-16">
+            <span className="text-primary font-semibold">Our Work</span>
+            <h2 className="text-4xl font-bold mt-2 mb-4">
+              Featured Projects
+            </h2>
+            <p className="text-muted-foreground max-w-3xl mx-auto">
+              Explore our portfolio of successful UI/UX design projects that have helped businesses
+              achieve their goals and delight their users
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {portfolioProjects.map((project, index) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative bg-background rounded-xl overflow-hidden border hover:shadow-lg transition-all duration-300"
+              >
+                <Link href={project.link || "#"} className="block">
+                  <div className="aspect-video relative overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20" />
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <Badge variant="secondary" className="bg-background/80 backdrop-blur-sm">
+                        {project.category}
+                      </Badge>
+                      {project.year && (
+                        <Badge variant="outline" className="bg-background/80 backdrop-blur-sm">
+                          <Calendar className="w-3 h-3 mr-1" />
+                          {project.year}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-start justify-between mb-2">
+                      <h3 className="text-xl font-bold">{project.title}</h3>
+                      {project.client && (
+                        <div className="flex items-center text-sm text-muted-foreground">
+                          <Building className="w-4 h-4 mr-1" />
+                          {project.client}
+                        </div>
+                      )}
+                    </div>
+                    <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
+                    <div className="space-y-2">
+                      {project.metrics.map((metric) => (
+                        <div key={metric} className="flex items-center gap-2 text-sm">
+                          <CheckCircle2 className="w-4 h-4 text-primary" />
+                          <span className="text-muted-foreground">{metric}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {project.tags.map((tag) => (
+                        <Badge key={tag} variant="outline" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            className="text-center mt-12"
+          >
+            <Button variant="outline" size="lg" className="group" asChild>
+              <Link href="/portfolio">
+                View All Projects
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
           </motion.div>
         </div>
@@ -514,7 +567,7 @@ export default function ERPNextPage() {
         <motion.div className="text-center mb-16">
           <h2 className="text-3xl font-bold mb-4">Industries We Serve</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Tailored ERPNext solutions for various industry verticals
+            Tailored UI/UX design solutions for various industry verticals
           </p>
         </motion.div>
 
@@ -523,7 +576,7 @@ export default function ERPNextPage() {
             <motion.div
               key={industry.name}
               initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-card p-6 rounded-xl border group hover:shadow-lg transition-all duration-300"
             >
@@ -549,17 +602,17 @@ export default function ERPNextPage() {
         <div className="container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             className="max-w-4xl mx-auto text-center space-y-8"
           >
             <Sparkles className="w-12 h-12 text-primary mx-auto" />
-            <h2 className="text-4xl font-bold">Ready to Get Started?</h2>
+            <h2 className="text-4xl font-bold">Ready to Transform Your Digital Presence?</h2>
             <p className="text-lg text-muted-foreground">
-              Let's discuss how ERPNext can transform your business operations
+              Let's discuss how our UI/UX design services can elevate your brand
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" onClick={() => setShowContactDialog(true)}>
-                Schedule a Demo <ArrowRight className="ml-2 h-4 w-4" />
+                Start Your Project <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link href="/contact">

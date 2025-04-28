@@ -45,6 +45,7 @@ const footerNav = [
     links: [
       { href: "/services/devops", label: "DevOps Solutions" },
       { href: "/services/erpnext", label: "ERPNext Solutions" },
+      { href: "/services/ui-ux-design", label: "UI/UX Design" },
       { href: "/services", label: "All Services" }
     ]
   }

@@ -31,29 +31,29 @@ const teamMembers = [
       github: "https://github.com/johnsmith"
     }
   },
-  {
-    name: "Akaash Panwar",
-    role: "Co-Founder & CTO",
-    image: "/team/sarah-johnson.jpg",
-    bio: "Deep expertise in Aplication and Tech Leadership",
-    expertise: ["Mobile Development", "Data Administration", "System Design"],
-    social: {
-      linkedin: "https://linkedin.com/in/sarahjohnson",
-      twitter: "https://twitter.com/sarahjohnson",
-      github: "https://github.com/sarahjohnson"
-    }
-  },
-  {
-    name: "Vaishnavee Lilhare",
-    role: "UIUX and Product Designer",
-    image: "/team/michael-chen.jpg",
-    bio: "Product Designer expert with a track record of implementing efficient in UIUX and Product Design",
-    expertise: ["Product Designer", "UIUX", "Product  Management"],
-    social: {
-      linkedin: "https://linkedin.com/in/michaelchen",
-      github: "https://github.com/michaelchen"
-    }
-  },
+  // {
+  //   name: "Akaash Panwar",
+  //   role: "Co-Founder & CTO",
+  //   image: "/team/sarah-johnson.jpg",
+  //   bio: "Deep expertise in Aplication and Tech Leadership",
+  //   expertise: ["Mobile Development", "Data Administration", "System Design"],
+  //   social: {
+  //     linkedin: "https://linkedin.com/in/sarahjohnson",
+  //     twitter: "https://twitter.com/sarahjohnson",
+  //     github: "https://github.com/sarahjohnson"
+  //   }
+  // },
+  // {
+  //   name: "Vaishnavee Lilhare",
+  //   role: "UIUX and Product Designer",
+  //   image: "/team/michael-chen.jpg",
+  //   bio: "Product Designer expert with a track record of implementing efficient in UIUX and Product Design",
+  //   expertise: ["Product Designer", "UIUX", "Product  Management"],
+  //   social: {
+  //     linkedin: "https://linkedin.com/in/michaelchen",
+  //     github: "https://github.com/michaelchen"
+  //   }
+  // },
   // {
   //   name: "Emily Rodriguez",
   //   role: "Marketing Director",
